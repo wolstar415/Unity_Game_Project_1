@@ -304,7 +304,7 @@ public class EnemyStat : MonoBehaviour
         F_damage = damage * add_damage;
 
 
-        F_damage = Mathf.Clamp(F_damage, 1, Hp + 1);
+        F_damage = Mathf.Clamp(F_damage, 1, Hp);
 
         try
         {

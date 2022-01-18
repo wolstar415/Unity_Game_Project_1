@@ -58,24 +58,41 @@ public class Tower_Controll : MonoBehaviour
 
                 {
                     enemies.Remove(targetObject);
+                    targetObject = null;
+                    
 
                 }
-                if (enemies.Contains(targetObject) == false)
+                if (enemies.Count == 0)
+                {
+                    targetObject = null;
+                    towerstate = TowerState.IDLE;
+                    return;
+                }
+                if (enemies.Contains(targetObject) == false && AttackCool)
                 {
                     //없으니까 타켓오브젝트 제거
                     targetObject = null;
                     NextEnemyScan();//다음꺼찾기
                 }
+
                 if (targetObject != null)
                 {
 
-                    if (noRotation==false)
+                    if (noRotation==false && targetObject.gameObject.GetComponent<EnemyStat>().Dead==false)
                     {
+                        try
+                        {
+                            transform.LookAt(targetObject.transform);
+                            Vector3 dir = gameObject.transform.localRotation.eulerAngles;
+                            dir.x = 0;
+                            transform.localRotation = Quaternion.Euler(dir);
+                        }
+                        catch (System.Exception)
+                        {
 
-                transform.LookAt(targetObject.transform);
-                Vector3 dir = gameObject.transform.localRotation.eulerAngles;
-                dir.x = 0;
-                transform.localRotation = Quaternion.Euler(dir);
+                            
+                        }
+                
                     }
 
 
@@ -89,7 +106,7 @@ public class Tower_Controll : MonoBehaviour
 
                 // 쿨
 
-                if (AttackCool)
+                if (AttackCool && targetObject != null)
                 {
                     AttackCool = false;
                     GetComponent<Tower_BulletCreate>().Enemy= targetObject;

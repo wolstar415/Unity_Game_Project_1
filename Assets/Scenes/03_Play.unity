@@ -59557,6 +59557,7 @@ MonoBehaviour:
   - {fileID: 1090216006100449014, guid: 4caccdc58d053a9468e25fb3f182dff1, type: 3}
   - {fileID: 1090216006100449014, guid: f53626244f235334fbd5d4e4f7d05eb1, type: 3}
   - {fileID: 1090216006100449014, guid: 467b9915af060064e83a078a1282b3c7, type: 3}
+  - {fileID: 1090216006100449014, guid: 1c3b485513aa19c44b888f029e5a6cc2, type: 3}
   Tower_Level_7:
   - {fileID: 1090216006100449014, guid: be56f8057b3ebc840aebf50ffaef01b3, type: 3}
   - {fileID: 1090216006100449014, guid: 0b78b9eb48adcbe4bb4f9177f1970fa3, type: 3}

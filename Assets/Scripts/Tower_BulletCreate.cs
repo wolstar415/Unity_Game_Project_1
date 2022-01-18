@@ -14,7 +14,7 @@ public class Tower_BulletCreate : MonoBehaviour
     public Transform CreatePos;
     public Transform CreatePos2;
     public Transform CreatePos3;
-
+    bool[] my_coroutine_is_running = new bool[100];
     [Header("이펙트")]
     public List<GameObject> effect;
 
@@ -438,14 +438,8 @@ public class Tower_BulletCreate : MonoBehaviour
 
         towerstat._animation.Play("Anim_Attack");
         yield return new WaitForSeconds(0.2f);
-        int con = 0;
         for (int i = 0; i < tower_controll.enemies.Count; i++)
         {
-            if (con >= 4)
-            {
-            }
-            else
-            {
 
                 GameObject bullet = Instantiate(Bullet00);
                 bullet.transform.position = transform.position;
@@ -453,10 +447,6 @@ public class Tower_BulletCreate : MonoBehaviour
                 //z
                 bullet.GetComponent<BulletState>().Target = tower_controll.enemies[i];
 
-
-
-                con++;
-            }
         }
         yield return new WaitForSeconds(0.3f);
         towerstat._animation.Play("Anim_Idle");
@@ -1570,6 +1560,30 @@ public void BulletCreate_T_26()
         enemy.gameObject.GetComponent<EnemyStat>().DamageTrigger(gameObject, _Damage);
 
     }
+    
+
+    public void BulletCreate_T_49()
+    {
+        towerstat.AttackCont++;
+        
+        Enemy.gameObject.GetComponent<EnemyStat>().DamageTrigger(gameObject, towerstat.DamageF());
+        if (my_coroutine_is_running[0]==false)
+        {
+
+        towerstat._animator.Play("Attack");
+        StartCoroutine(BulletCreate_T_49_ac());
+        }
+
+
+
+    }
+    IEnumerator BulletCreate_T_49_ac()
+    {
+        my_coroutine_is_running[0] = true;
+        yield return new WaitUntil(() => gameObject.GetComponent<Tower_Controll>().enemies.Count == 0);
+        towerstat._animator.Play("Idle");
+        my_coroutine_is_running[0] = false;
+    }
 
     public IEnumerator DamageTime(GameObject tower,GameObject enemy,float time,float damage,float AddCriP=0f,float AddCriD=0f)
     {
@@ -1647,5 +1661,7 @@ public void BulletCreate_T_26()
             yield return new WaitForEndOfFrame();
         }
     }
+
+
 
 }
