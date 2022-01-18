@@ -17,17 +17,14 @@ public class Loading : MonoBehaviour
     {
         nextScene = sceneName;
         SceneManager.LoadScene("Loading");
-                Debug.Log("0");
     }
     void Start()
     {
-                Debug.Log("1");
         StartCoroutine(LoadSceneProcess());
     }
 
     IEnumerator LoadSceneProcess()
     {
-                Debug.Log("2");
       AsyncOperation op =  SceneManager.LoadSceneAsync(nextScene);
         op.allowSceneActivation = false;
 

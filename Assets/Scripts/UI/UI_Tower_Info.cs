@@ -29,8 +29,8 @@ using UnityEngine.UI;
     public Text textInfo_text;
     void Start()  // 처음 시작시 실행되는 함수입니다.
     {
-        levelupcost[1] = 1;
-        levelupcost[2] = 1;
+        levelupcost[1] = 2;
+        levelupcost[2] = 2;
         levelupcost[3] = 2;
         levelupcost[4] = 4;
         levelupcost[5] = 8;

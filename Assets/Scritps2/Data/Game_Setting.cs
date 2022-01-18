@@ -16,10 +16,7 @@ public class Game_Setting : MonoBehaviour
     public List<AudioClip> sound;
     
    
-    void Start()  // 처음 시작시 실행되는 함수입니다.
-    {
-        
-    }
+
 
     
     private void Awake()
@@ -30,8 +27,5 @@ public class Game_Setting : MonoBehaviour
             control = this;
         }
     }
-    void Update() // 매 프레임마다 실행되는 함수입니다.
-    {
-        
-    }
+
 }

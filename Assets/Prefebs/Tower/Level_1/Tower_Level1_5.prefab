@@ -242,6 +242,7 @@ MonoBehaviour:
   quality: 0
   AttackCont: 0
   nextCri: 0
+  startpos: {x: 0, y: 0, z: 0}
   Tile: {fileID: 0}
   TileNum: 0
   gamedata: {fileID: 0}
@@ -262,6 +263,7 @@ MonoBehaviour:
   Damagecheck: 0
   _animation: {fileID: 0}
   _animator: {fileID: 4576220487531373941}
+  Dead: 0
 --- !u!114 &5684329538535108224
 MonoBehaviour:
   m_ObjectHideFlags: 0

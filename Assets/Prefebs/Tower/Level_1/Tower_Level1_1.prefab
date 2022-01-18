@@ -241,6 +241,8 @@ MonoBehaviour:
   Level: 1
   quality: 0
   AttackCont: 0
+  nextCri: 0
+  startpos: {x: 0, y: 0, z: 0}
   Tile: {fileID: 0}
   TileNum: 0
   gamedata: {fileID: 0}
@@ -259,6 +261,9 @@ MonoBehaviour:
   DamagePrefeb: {fileID: 3197138983017340189, guid: e79069fd85bb6304280dab73bd2853d0, type: 3}
   DamageUI: {fileID: 0}
   Damagecheck: 0
+  _animation: {fileID: 0}
+  _animator: {fileID: 0}
+  Dead: 0
 --- !u!114 &5684329538535108224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +281,9 @@ MonoBehaviour:
   tower_controll: {fileID: 0}
   towerstat: {fileID: 0}
   CreatePos: {fileID: 5476322425630128044}
+  CreatePos2: {fileID: 0}
+  CreatePos3: {fileID: 0}
+  effect: []
 --- !u!1 &1374102116928500975
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,6 +424,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower_controll: {fileID: 0}
+  buff_AD: 0
+  buff_AS: 0
+  buff_RANG: 0
+  buff_criP: 0
+  buff_criD: 0
+  debuff_speed: 0
+  debuff_speedP: 0
+  debuff_defense: 0
 --- !u!54 &6064664729829706407
 Rigidbody:
   m_ObjectHideFlags: 0

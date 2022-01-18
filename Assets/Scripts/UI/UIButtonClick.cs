@@ -67,8 +67,8 @@ public class UIButtonClick : MonoBehaviour
 
     private void Start()
     {
-        levelupcost[1] = 1;
-        levelupcost[2] = 1;
+        levelupcost[1] = 2;
+        levelupcost[2] = 2;
         levelupcost[3] = 2;
         levelupcost[4] = 4;
         levelupcost[5] = 8;

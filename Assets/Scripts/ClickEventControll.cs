@@ -467,6 +467,15 @@ public class ClickEventControll : MonoBehaviour
 
     void Update() // 매 프레임마다 실행되는 함수입니다.
     {
+        //if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && onclick == false)
+        //{
+        //    // Check if finger is over a UI element
+        //    if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+        //    {
+        //        Application.Quit();
+        //        return;
+        //    }
+        //}
 
         if (Input.GetMouseButtonDown(0) )
         {
