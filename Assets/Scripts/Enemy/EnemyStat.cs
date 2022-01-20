@@ -45,7 +45,8 @@ public class EnemyStat : MonoBehaviour
     public float Speed()
     {
         float f = SpeedInit + SpeedCalculate; // 기본이속 + 연산이속(빼기등등)
-        f = Mathf.Clamp(f, 50f, 1000f);
+
+        f = Mathf.Clamp(f, SpeedInit/2, 1000f);
 
         
         //if (Stun==true)
@@ -80,6 +81,7 @@ public class EnemyStat : MonoBehaviour
         parentTransform = GameObject.Find("HUDTranform").GetComponent<Transform>();
         HpBar = Instantiate(HpBarPrefeb);
         HpBar.transform.SetParent(parentTransform);
+        HpBar.GetComponent<Hpbar_System>().Hp_Bar_Setup(Hp, Hpmax,Boss);
         //Hp = 5f;
     }
 
@@ -116,7 +118,7 @@ public class EnemyStat : MonoBehaviour
             return;
         }
         HpBar.transform.position=Camera.main.WorldToScreenPoint(transform.position+new Vector3(0f,0.5f,0f));
-        HpBar.GetComponent<Slider>().value = Hp / Hpmax;
+        //HpBar.GetComponent<Slider>().value = Hp / Hpmax;
         if (Stun == true)
         {
             StunCurTime += Time.deltaTime;
@@ -355,7 +357,7 @@ public class EnemyStat : MonoBehaviour
 
             if (Boss)
             {
-                GameObject.Find("GameInfo").GetComponent<GameInfo>().PointCheck(4);
+                //GameObject.Find("GameInfo").GetComponent<GameInfo>().PointCheck(4);
             }
             // GameObject.Find("GameInfo").GetComponent<GameInfo>().Gold += GetMoney;
 
@@ -363,6 +365,10 @@ public class EnemyStat : MonoBehaviour
             Destroy(HpBar);
             gameObject.transform.position = new Vector3(1000f, 1000f, 1000f);
             Destroy(gameObject,2.0f);
+        }
+        else
+        {
+            HpBar.GetComponent<Hpbar_System>().Hp_Bar_Setup(Hp, Hpmax,Boss);
         }
     }
 

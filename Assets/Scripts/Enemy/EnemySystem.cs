@@ -38,7 +38,7 @@ public class EnemySystem : MonoBehaviour
 
     public void SpeedMi_Trigger1()
     {
-        float minS = enemystat.SpeedInit * 0.15f;
+        float minS = enemystat.SpeedInit * 0.10f;
 
 
         if (SpeedMi_Bool_Trigger1)
@@ -57,7 +57,7 @@ public class EnemySystem : MonoBehaviour
     }
     public void SpeedMi_Trigger2(int i)
     {
-        float minS = enemystat.SpeedInit * 0.30f;
+        float minS = enemystat.SpeedInit * 0.10f;
         float t= i;
 
 

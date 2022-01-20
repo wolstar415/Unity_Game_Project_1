@@ -22,12 +22,15 @@ public class Tower_Controll : MonoBehaviour
     public bool AttackCool=false;
     public bool noAni=false;
 
+    Quaternion startrotation;
+
 
 
     void Start()  // 처음 시작시 실행되는 함수입니다.
     {
         tower_stat=GetComponent<TowerStat>();
         AttackCool = true;
+        startrotation = transform.GetChild(3).localRotation;
     }
     void NextEnemyScan()
     {
@@ -54,7 +57,7 @@ public class Tower_Controll : MonoBehaviour
                 }
                 break;
             case TowerState.ATTACKING:
-                if (targetObject == null || targetObject.activeSelf == false|| targetObject.gameObject.GetComponent<EnemyStat>().Dead)
+                if (targetObject == null || targetObject.activeSelf == false || targetObject.gameObject.GetComponent<EnemyStat>().Dead)
 
                 {
                     enemies.Remove(targetObject);
@@ -62,12 +65,17 @@ public class Tower_Controll : MonoBehaviour
                     
 
                 }
+                if (targetObject==null && enemies.Count>0)
+                {
+                    targetObject = enemies[0];
+                }
                 if (enemies.Count == 0)
                 {
                     targetObject = null;
                     towerstate = TowerState.IDLE;
                     return;
                 }
+
                 if (enemies.Contains(targetObject) == false && AttackCool)
                 {
                     //없으니까 타켓오브젝트 제거
@@ -82,10 +90,16 @@ public class Tower_Controll : MonoBehaviour
                     {
                         try
                         {
-                            transform.LookAt(targetObject.transform);
-                            Vector3 dir = gameObject.transform.localRotation.eulerAngles;
-                            dir.x = 0;
-                            transform.localRotation = Quaternion.Euler(dir);
+                            //Vector3 dir = targetObject.transform.position - gameObject.transform.GetChild(3).position;
+                            Vector3 dir = targetObject.transform.position - gameObject.transform.GetChild(3).position;
+                                dir.y = 0;
+                            dir.Normalize();
+
+                            
+                            transform.GetChild(3).rotation = Quaternion.Slerp(transform.GetChild(3).rotation, Quaternion.LookRotation(dir), 4 * Time.deltaTime);
+
+
+                            //transform.GetChild(3).rotation = Quaternion.Slerp(transform.GetChild(3).rotation* startrotation, Quaternion.LookRotation(dir), 7 * Time.deltaTime);
                         }
                         catch (System.Exception)
                         {
@@ -155,12 +169,14 @@ public class Tower_Controll : MonoBehaviour
         {
 
             gameObject.transform.GetChild(2).gameObject.SetActive(true);
+            //gameObject.transform.GetChild(3).GetComponent<>;
             //gameObject.GetComponent<TowerStat>().Tile.transform.GetChild()
 
         }
         else
         {
             gameObject.transform.GetChild(2).gameObject.SetActive(false);
+            //gameObject.transform.GetChild(2).gameObject.SetActive(false);
         }
 
 

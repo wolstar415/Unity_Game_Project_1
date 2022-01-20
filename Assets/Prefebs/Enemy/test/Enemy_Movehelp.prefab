@@ -537,7 +537,7 @@ MonoBehaviour:
   moveTarnsform: {fileID: 0}
   EnemyChar: {fileID: 0}
   rotationSpeed: 15
-  movespeed: 600
+  movespeed: 700
   movenum: 0
 --- !u!1 &1300070071406548
 GameObject:

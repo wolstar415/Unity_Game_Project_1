@@ -35,7 +35,7 @@ public class LaserTriggerEffect : MonoBehaviour
             Destroy(Laser);
             return;
         }
-            if (tower_Controll.targetObject == null)
+            if (tower_Controll.targetObject == null || gameObject.GetComponent<Tower_Controll>().towerstate== Tower_Controll.TowerState.MOVING)
             {
             laser.enabled = false;
             meEffect.SetActive(false);

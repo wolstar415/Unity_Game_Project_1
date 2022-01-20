@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4887270080479870}
-  - component: {fileID: 95760122612387900}
   - component: {fileID: 135975656248482850}
   - component: {fileID: 255559948638341791}
   - component: {fileID: -1539590062558679408}
@@ -31,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1258991314359982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children:
   - {fileID: 1921167047373213307}
   - {fileID: 2832329283604340936}
@@ -39,25 +38,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &95760122612387900
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1258991314359982}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ef7ff960f0bc4f94a993f80d1e51ba97, type: 3}
-  m_Controller: {fileID: 9100000, guid: 41b237aee868de1458848ecedd5a7811, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!135 &135975656248482850
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -118,7 +98,7 @@ MonoBehaviour:
   enemySystem: {fileID: 0}
   parentTransform: {fileID: 0}
   TextUi: {fileID: 905756001578832793, guid: a21b013da5cf37f46a5587f7a20c347b, type: 3}
-  HpBarPrefeb: {fileID: 379393507527306905, guid: 17042b54cf26a2a45a885cbfb14515a4, type: 3}
+  HpBarPrefeb: {fileID: 379393507527306905, guid: 036a028b6b514d7438be66d5f31fb851, type: 3}
   HpBar: {fileID: 0}
 --- !u!54 &2687550359811401704
 Rigidbody:

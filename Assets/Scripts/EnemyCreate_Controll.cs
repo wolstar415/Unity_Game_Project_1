@@ -7,6 +7,11 @@ public class EnemyCreate_Controll : MonoBehaviour
 {
     public List<GameObject> EnemyObject;
     public List<GameObject> BossEnemyObject;
+
+
+    public List<GameObject> EnemyObjectRan;
+    public List<GameObject> EnemyObjectRan2;
+
     public float coolTime = 1f;
     public float curTime = 0f;
     GameInfo gameInfo;
@@ -69,15 +74,11 @@ public class EnemyCreate_Controll : MonoBehaviour
         if (gameInfo.Round > 1)
         {
         
-        gameInfo.GoldCheck(30);
+        gameInfo.GoldCheck(20);
             gameInfo.PointCheck(1);
-            GameObject[] damagetext = GameObject.FindGameObjectsWithTag("Tower");
+            
 
-            for (int i = 0; i < damagetext.Length; i++)
-            {
-                RoundStat(damagetext[i]);
-
-            }
+            
         }
 
         
@@ -102,7 +103,14 @@ public class EnemyCreate_Controll : MonoBehaviour
     }
     IEnumerator gogo()
     {
-        yield return new WaitForSeconds(3f);
+        
+        yield return new WaitForSeconds(2.5f);
+        GameObject[] damagetext = GameObject.FindGameObjectsWithTag("Tower");
+        for (int i = 0; i < damagetext.Length; i++)
+        {
+            RoundStat(damagetext[i]);
+
+        }
         if (gameInfo.Round % 5 == 0)
         {
             gameInfo.Enemy_noCon = 1;
@@ -119,13 +127,21 @@ public class EnemyCreate_Controll : MonoBehaviour
 
     IEnumerator bossCreate()
     {
+        int i = Random.Range(0, EnemyObjectRan2.Count-1);
         yield return new WaitForSeconds(0f);
 
         if (GameObject.Find("GameInfo").GetComponent<GameInfo>().Gameover)
         {
             yield break;
         }
-        GameObject Enemy = Instantiate(BossEnemyObject[gameInfo.Round/5]);
+        //GameObject Enemy = Instantiate(BossEnemyObject[gameInfo.Round/5]);
+        GameObject Enemy = Instantiate(EnemyObjectRan2[i]);
+        Enemy.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+        Enemy.GetComponent<EnemyStat>().Boss=true;
+        if (EnemyObjectRan2.Count > 1)
+        {
+            EnemyObjectRan2.RemoveAt(i);
+        }
         Enemy.transform.position = gameObject.transform.position;
         //Invoke("RoundStart", gameInfo.NextRoundTime);
         Enemy.gameObject.name = "Boss_Round" + gameInfo.Round;
@@ -142,7 +158,9 @@ public class EnemyCreate_Controll : MonoBehaviour
 
     IEnumerator StartRoundGo(float Time,int EnemyCnt)
     {
-
+        
+        int i = Random.Range(0, EnemyObjectRan.Count-1);
+        
         if (GameObject.Find("GameInfo").GetComponent<GameInfo>().Gameover)
         {
             yield break;
@@ -151,10 +169,14 @@ public class EnemyCreate_Controll : MonoBehaviour
         { 
 
 
-        if (EnemyCnt >0)
+        //if (EnemyCnt >0)
+                while (EnemyCnt > 0)
+
         {
-        GameObject Enemy = Instantiate(EnemyObject[gameInfo.Round]);
-        Enemy.transform.position = gameObject.transform.position;
+        //GameObject Enemy = Instantiate(EnemyObject[gameInfo.Round]);
+                GameObject Enemy = Instantiate(EnemyObjectRan[i]);
+                
+                Enemy.transform.position = gameObject.transform.position;
         Enemy.gameObject.name = "Enemy_Round" + gameInfo.Round + "_" + EnemyNameCnt;
             Enemy.GetComponent<EnemyStat>().RoundNum = gameInfo.Round;
             Enemy.GetComponent<EnemyStat>().Hp = Enemy_Hp;
@@ -165,11 +187,17 @@ public class EnemyCreate_Controll : MonoBehaviour
             EnemyNameCnt++;
             gameInfo.con_Enemy++;
             gameInfo.Enemy_noCon--;
+                EnemyCnt--;
             yield return new WaitForSeconds(Time);
-        StartCoroutine(StartRoundGo(Time, EnemyCnt - 1));
+        //StartCoroutine(StartRoundGo(Time, EnemyCnt - 1));
         }
             yield return new WaitUntil(() => gameInfo.deadCon >=gameInfo.RoundCnt);
             //Debug.Log("라운드시작"+ gameInfo.Round);
+            if (EnemyObjectRan.Count>1)
+            {
+
+            EnemyObjectRan.RemoveAt(i);
+            }
             gameInfo.deadCon = 0;
             RoundStart();
 

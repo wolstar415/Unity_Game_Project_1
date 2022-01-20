@@ -60,7 +60,10 @@ public class GameInfo : MonoBehaviour
 
         for (int i = 0; i < damagetext2.Length; i++)
         {
-            Destroy(damagetext2[i]);
+            damagetext2[i].GetComponent<EnemyStat>().Dead = true;
+            Destroy(damagetext2[i].GetComponent<EnemyStat>().HpBar);
+            damagetext2[i].transform.position = new Vector3(1000f, 1000f, 1000f);
+            Destroy(damagetext2[i], 2.0f);
         }
     }
     void Start()  // 처음 시작시 실행되는 함수입니다.

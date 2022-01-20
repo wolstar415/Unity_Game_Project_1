@@ -549,6 +549,7 @@ MonoBehaviour:
   DefenceInit: 0
   Dead: 0
   Boss: 0
+  enemySystem: {fileID: 0}
   parentTransform: {fileID: 0}
   TextUi: {fileID: 905756001578832793, guid: a21b013da5cf37f46a5587f7a20c347b, type: 3}
   HpBarPrefeb: {fileID: 379393507527306905, guid: 17042b54cf26a2a45a885cbfb14515a4, type: 3}
@@ -581,24 +582,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c199a114492c5d448b2550f4829a9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 0
-  Hpmax: 0
-  GetMoney: 0
-  StunCoolTime: 0
-  StunCurTime: 0
-  RoundNum: 0
-  Stun: 0
-  SpeedCalculate: 0
-  SpeedInit: 0
-  DefenceCalculate: 0
-  DefenceInit: 0
-  Dead: 0
-  Boss: 0
-  parentTransform: {fileID: 0}
-  TextUi: {fileID: 0}
-  HpBarPrefeb: {fileID: 0}
-  HpBar: {fileID: 0}
   SpeedMi_Bool_Trigger1: 0
+  SpeedMi_Bool_Trigger2: 0
+  DefenceMi_Bool_Trigger1: 0
+  DefenceMi_Bool_Trigger2: 0
+  enemystat: {fileID: 0}
 --- !u!1 &1300070071406548
 GameObject:
   m_ObjectHideFlags: 0

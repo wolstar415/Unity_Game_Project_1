@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TowerStat : MonoBehaviour
 {
-
+    
     int itemmax;
     public bool moveOk=false;
     public float Damage;
@@ -29,6 +30,7 @@ public class TowerStat : MonoBehaviour
     public int Item_InDEX = 0;
     public int Item_Level = 0;
     public float Item_AD;
+    public float Item_ADP;
     public float Item_AS;
     public float Item_Cri_P;
     public float Item_Cri_D;
@@ -37,6 +39,7 @@ public class TowerStat : MonoBehaviour
 
     [Header("버프")]
     public float Buff_AD;
+    public float Buff_ADP;
     public float Buff_AS;
     public float Buff_Cri_P;
     public float Buff_Cri_D;
@@ -65,7 +68,9 @@ public class TowerStat : MonoBehaviour
     public float DamageF()
     {
         float f;
-        f = Damage + Item_AD + Buff_AD;
+        float D_P = Damage * (Buff_ADP * 0.01f);
+        float I_P = Damage * (Item_ADP * 0.01f);
+        f = Damage + Item_AD + Buff_AD + D_P + I_P;
 
 
         return f;
@@ -135,7 +140,7 @@ public class TowerStat : MonoBehaviour
             return;
         }
         DamageUI.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0f, 1f, 0f));
-        DamageUI.GetComponent<Text>().text = Damagecheck.ToString("F0");
+        DamageUI.GetComponentInChildren<TextMeshProUGUI>().text = Damagecheck.ToString("F0");
     }
 
     public void toweritem()
@@ -194,7 +199,8 @@ public void item_skill()
         }
         else if (I_index == 3)
         {
-            Item_AD = Item_AD + (Damage * (0.1f * I_level));
+            Item_ADP = 10f * I_level;
+            //Item_AD = Item_AD + (Damage * (0.1f * I_level));
         }
         else if (I_index == 4)
         {

@@ -10,6 +10,14 @@ public class Menu_Click_Event : MonoBehaviour
     public Slider slider2;
     public GameObject damageON;
     public GameObject damageOFF;
+
+    public GameObject nan;
+    
+    public GameObject Map;
+    public GameObject Map2;
+    public List<Vector3> rectTransformList;
+    public int moveint=0;
+
     public void Button_Start()
     {
         
@@ -75,37 +83,87 @@ public class Menu_Click_Event : MonoBehaviour
     {
         
         GameObject.Find("Game_Setting").GetComponent<Game_Setting>().di = 1;
-        //SceneManager.LoadScene("03_Play");
-        Loading.LoadScene("03_Play");
+        nan.SetActive(false);
+        Map.SetActive(true);
     }
     public void Clickdi2()
     {
        // GameObject.Find("Game_Setting").GetComponent<AudioSource>().Stop();
         GameObject.Find("Game_Setting").GetComponent<Game_Setting>().di = 2;
-        Loading.LoadScene("03_Play");
+        nan.SetActive(false);
+        Map.SetActive(true);
     }
     public void Clickdi3()
     {
         //GameObject.Find("Game_Setting").GetComponent<AudioSource>().Stop();
         GameObject.Find("Game_Setting").GetComponent<Game_Setting>().di = 3;
-        Loading.LoadScene("03_Play");
+        nan.SetActive(false);
+        Map.SetActive(true);
     }
     public void Clickdi4()
     {
         //GameObject.Find("Game_Setting").GetComponent<AudioSource>().Stop();
         GameObject.Find("Game_Setting").GetComponent<Game_Setting>().di = 4;
-        Loading.LoadScene("03_Play");
+        nan.SetActive(false);
+        Map.SetActive(true);
     }
     public void Clickdi5()
     {
        // GameObject.Find("Game_Setting").GetComponent<AudioSource>().Stop();
         GameObject.Find("Game_Setting").GetComponent<Game_Setting>().di = 5;
-        Loading.LoadScene("03_Play");
+        nan.SetActive(false);
+        Map.SetActive(true);
     }
     public void Clickdi6()
     {
         //GameObject.Find("Game_Setting").GetComponent<AudioSource>().Stop();
         GameObject.Find("Game_Setting").GetComponent<Game_Setting>().di = 6;
+        nan.SetActive(false);
+        Map.SetActive(true);
+    }
+
+    public void map1()
+    {
+
         Loading.LoadScene("03_Play");
     }
+    public void map2()
+    {
+
+        Loading.LoadScene("04_Play");
+    }
+    public void map3()
+    {
+
+        Loading.LoadScene("05_Play");
+    }
+    public void map4()
+    {
+
+        Loading.LoadScene("06_Play");
+    }
+    public void left()
+    {
+        if (moveint ==0)
+        {
+            return;
+        }
+        moveint--;
+
+        Map2.GetComponent<RectTransform>().position = rectTransformList[moveint];
+
+
+    }
+    public void right()
+    {
+        if (moveint == rectTransformList.Count-1)
+        {
+            return;
+        }
+        moveint++;
+
+        Map2.GetComponent<RectTransform>().position = rectTransformList[moveint];
+
+    }
+
 }

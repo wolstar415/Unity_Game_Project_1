@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1258991314359982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 7881139979167431702}
   - {fileID: 2832329283604340936}
@@ -118,7 +118,7 @@ MonoBehaviour:
   enemySystem: {fileID: 0}
   parentTransform: {fileID: 0}
   TextUi: {fileID: 905756001578832793, guid: a21b013da5cf37f46a5587f7a20c347b, type: 3}
-  HpBarPrefeb: {fileID: 379393507527306905, guid: 17042b54cf26a2a45a885cbfb14515a4, type: 3}
+  HpBarPrefeb: {fileID: 379393507527306905, guid: 036a028b6b514d7438be66d5f31fb851, type: 3}
   HpBar: {fileID: 0}
 --- !u!54 &2687550359811401704
 Rigidbody:

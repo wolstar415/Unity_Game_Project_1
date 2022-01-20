@@ -492,13 +492,20 @@ public class ClickEventControll : MonoBehaviour
                 onclick = false;
                 return;
             }
+            //Debug.Log(Input.mousePosition);
+            if (Input.mousePosition.y < 110 && Input.mousePosition.x > 1805)
+            {
 
+                //Debug.Log("체크");
+                onclick = false;
+                return;
+            }
             //if (EventSystem.current.IsPointerOverGameObject())
             //{
             //    Debug.Log("체크");
             //    return;
             //}
-            //Debug.Log(Input.mousePosition);
+            //
             posz = Input.mousePosition;
 
             Ray ray = Mycamera.ScreenPointToRay(Input.mousePosition);
@@ -627,6 +634,7 @@ public class ClickEventControll : MonoBehaviour
             selectlevelint = 0;
             //onclick = false;
             return;
+            
         }
         if (Input.GetMouseButton(0)&& onclick==true)
             {
@@ -634,21 +642,21 @@ public class ClickEventControll : MonoBehaviour
             {
 
 
-            if (posz.y < Input.mousePosition.y)
+            if (posz.y > Input.mousePosition.y)
             {
                     Mycamera.transform.position = Mycamera.transform.position + new Vector3(0, 0, Time.deltaTime * 1 * 8);
-                if (Mycamera.transform.position.z > -5.3)
+                if (Mycamera.transform.position.z > -10.7)
                 {
-                        Mycamera.transform.position = new Vector3(Mycamera.transform.position.x, Mycamera.transform.position.y, -5.3f);
+                        Mycamera.transform.position = new Vector3(Mycamera.transform.position.x, Mycamera.transform.position.y, -10.7f);
                 }
             }
-            if (posz.y > Input.mousePosition.y)
+            if (posz.y < Input.mousePosition.y)
             {
 
                     Mycamera.transform.position = Mycamera.transform.position + new Vector3(0, 0, Time.deltaTime * -1 * 8);
-                if (Mycamera.transform.position.z < -11)
+                if (Mycamera.transform.position.z < -15.5)
                 {
-                        Mycamera.transform.position = new Vector3(Mycamera.transform.position.x, Mycamera.transform.position.y, -11f);
+                        Mycamera.transform.position = new Vector3(Mycamera.transform.position.x, Mycamera.transform.position.y, -15.5f);
                 }
             }
 
@@ -695,21 +703,21 @@ public class ClickEventControll : MonoBehaviour
                 //
                 //Debug.Log(Input.mousePosition.y);
 
-                if (1000 < Input.mousePosition.y )
+                if (1000-100 < Input.mousePosition.y )
                 {
                     Mycamera.transform.position = Mycamera.transform.position + new Vector3(0, 0, Time.deltaTime * 1 * 8);
-                    if (Mycamera.transform.position.z > -5.3)
+                    if (Mycamera.transform.position.z > -10.7)
                     {
-                        Mycamera.transform.position = new Vector3(Mycamera.transform.position.x, Mycamera.transform.position.y, -5.3f);
+                        Mycamera.transform.position = new Vector3(Mycamera.transform.position.x, Mycamera.transform.position.y, -10.7f);
                     }
                 }
-                if (55 > Input.mousePosition.y )
+                if (55+100 > Input.mousePosition.y )
                 {
 
                     Mycamera.transform.position = Mycamera.transform.position + new Vector3(0, 0, Time.deltaTime * -1 * 8);
-                    if (Mycamera.transform.position.z < -11)
+                    if (Mycamera.transform.position.z < -15.5)
                     {
-                        Mycamera.transform.position = new Vector3(Mycamera.transform.position.x, Mycamera.transform.position.y, -11f);
+                        Mycamera.transform.position = new Vector3(Mycamera.transform.position.x, Mycamera.transform.position.y, -15.5f);
                     }
                 }
 

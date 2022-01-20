@@ -12,6 +12,7 @@ public class Attack_Detecting : MonoBehaviour
 
     }
     public float buff_AD = 0f;
+    public float buff_ADP = 0f;
     public float buff_AS = 0f;
     public float buff_RANG = 0f;
     public float buff_criP = 0f;
@@ -51,9 +52,10 @@ public class Attack_Detecting : MonoBehaviour
 
         }
 
-        if (other.gameObject.tag == "Tower" && buff_AD+buff_AS+buff_criD+buff_criP+buff_RANG !=0)
+        if (other.gameObject.tag == "Tower" && buff_AD+buff_AS+buff_criD+buff_criP+buff_RANG+ buff_ADP != 0)
         {
             other.gameObject.GetComponent<TowerStat>().Buff_AD += buff_AD;
+            other.gameObject.GetComponent<TowerStat>().Buff_ADP += buff_ADP;
             other.gameObject.GetComponent<TowerStat>().Buff_AS += buff_AS;
             other.gameObject.GetComponent<TowerStat>().Buff_Cri_D += buff_criD;
             other.gameObject.GetComponent<TowerStat>().Buff_Cri_P += buff_criP;
@@ -85,9 +87,10 @@ public class Attack_Detecting : MonoBehaviour
             }
         }
 
-        if (other.gameObject.tag == "Tower" && buff_AD + buff_AS + buff_criD + buff_criP + buff_RANG != 0)
+        if (other.gameObject.tag == "Tower" && buff_AD + buff_AS + buff_criD + buff_criP + buff_RANG + buff_ADP != 0)
         {
             other.gameObject.GetComponent<TowerStat>().Buff_AD -= buff_AD;
+            other.gameObject.GetComponent<TowerStat>().Buff_ADP -= buff_ADP;
             other.gameObject.GetComponent<TowerStat>().Buff_AS -= buff_AS;
             other.gameObject.GetComponent<TowerStat>().Buff_Cri_D -= buff_criD;
             other.gameObject.GetComponent<TowerStat>().Buff_Cri_P -= buff_criP;

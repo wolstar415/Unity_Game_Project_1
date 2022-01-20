@@ -42,7 +42,7 @@ public class Enemy_Move_Controll : MonoBehaviour
         {
 
         gameObject.transform.position = Vector3.MoveTowards(transform.position, moveTarnsform.position, Time.deltaTime* enemyStat.Speed()* 0.01f);
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), rotationSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), rotationSpeed * Time.deltaTime);
         }
         
         
@@ -68,7 +68,7 @@ public class Enemy_Move_Controll : MonoBehaviour
 
     void LifeMin()
     {
-        if (gameObject.GetComponent<EnemyStat>().GetMoney ==1)
+        if (gameObject.GetComponent<EnemyStat>().Boss ==false)
         {
             //GameObject.Find("GameInfo").GetComponent<GameInfo>().Life = GameObject.Find("GameInfo").GetComponent<GameInfo>().Life - 1;
             GameObject.Find("GameInfo").GetComponent<GameInfo>().LifeCheck(-1);

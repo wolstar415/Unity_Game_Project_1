@@ -725,9 +725,20 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9746da3bfbf35d14faeee2b2b2d980e9, type: 3}
   - {fileID: 21300000, guid: 9746da3bfbf35d14faeee2b2b2d980e9, type: 3}
   SkillSprite: {fileID: 725901097}
-  Skill_Info_Text: {fileID: 2080962596}
-  item_info: {fileID: 206209091}
-  item_Info_Text: {fileID: 0}
+  Addtext: {fileID: 0}
+  add_Info_Text: {fileID: 0}
+  level_Info_Text: {fileID: 0}
+  MoneyIcon: {fileID: 0}
+  slider: {fileID: 0}
+  slider2: {fileID: 0}
+  damageON: {fileID: 0}
+  damageOFF: {fileID: 0}
+  Roundtext: {fileID: 0}
+  hptext: {fileID: 0}
+  defensetext: {fileID: 0}
+  speedtext: {fileID: 0}
+  checki: 0
+  levelupcost: 000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1001 &45234994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7507,9 +7518,17 @@ MonoBehaviour:
   RoundCnt: 1
   Level: 0
   Life: 20
+  ItemConMax: 0
   Enemy_noCon: 0
   con_Enemy: 0
   Gameover: 1
+  deadCon: 0
+  difficulty: 0
+  difficulty_AddHp: 1
+  Lifetext: {fileID: 0}
+  Roundtext: {fileID: 0}
+  Goldtext: {fileID: 0}
+  Pointtext: {fileID: 0}
 --- !u!1001 &466264575
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9391,7 +9410,11 @@ MonoBehaviour:
   ITEM_AS: []
   ITEM_Cri_P: []
   ITEM_Cri_D: []
-  ITEM_Info_String: []
+  ITEM_Info_String1: []
+  ITEM_Info_String2: []
+  ITEM_Info_String3: []
+  ITEM_Info_String4: []
+  ITEM_Info_String5: []
 --- !u!1001 &576885457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9680,7 +9703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   f: 0
-  pos: {x: 0, y: 0, z: 0}
+  posz: {x: 0, y: 0, z: 0}
 --- !u!1001 &594855296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18119,8 +18142,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41582451bb1b9fb4cb7d1a8d34f84354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyObject: {fileID: 1258991314359982, guid: 3749b9edee740c44ea7455a4fa1b7382, type: 3}
-  BossEnemyObject: {fileID: 8762793829478354717, guid: db21cf99d52b42a45980abcab05c8182, type: 3}
+  EnemyObject:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  BossEnemyObject:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   coolTime: 1
   curTime: 0
   EnemyNameCnt: 0
@@ -22141,47 +22170,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tower: {fileID: 0}
-  tower_ad_text: {fileID: 2106912449}
-  tower_range_text: {fileID: 265800629}
-  tower_as_text: {fileID: 554630803}
-  tower_Level_text: {fileID: 815543203}
-  tower_q_text: {fileID: 1321587970}
-  item_sprite:
-  - {fileID: 21300000, guid: 5a953d8aec5959742b9b28de28271173, type: 3}
-  - {fileID: 21300000, guid: 4ad16adfdf2d1a441879a598de742eb6, type: 3}
-  - {fileID: 21300000, guid: 31d9fd9a71fd2fa46b253808d9db9ab2, type: 3}
-  - {fileID: 21300000, guid: 97eb33f17282b874aafc04781652f343, type: 3}
-  - {fileID: 21300000, guid: 6e2d9e76728b86841bcb3fc15b91bdd4, type: 3}
-  - {fileID: 21300000, guid: 4ad16adfdf2d1a441879a598de742eb6, type: 3}
-  - {fileID: 21300000, guid: 31d9fd9a71fd2fa46b253808d9db9ab2, type: 3}
-  - {fileID: 21300000, guid: 97eb33f17282b874aafc04781652f343, type: 3}
-  - {fileID: 21300000, guid: 6e2d9e76728b86841bcb3fc15b91bdd4, type: 3}
-  - {fileID: 21300000, guid: 4ad16adfdf2d1a441879a598de742eb6, type: 3}
-  - {fileID: 21300000, guid: 31d9fd9a71fd2fa46b253808d9db9ab2, type: 3}
-  - {fileID: 21300000, guid: 97eb33f17282b874aafc04781652f343, type: 3}
-  - {fileID: 21300000, guid: 6e2d9e76728b86841bcb3fc15b91bdd4, type: 3}
-  - {fileID: 21300000, guid: 4ad16adfdf2d1a441879a598de742eb6, type: 3}
-  - {fileID: 21300000, guid: 31d9fd9a71fd2fa46b253808d9db9ab2, type: 3}
-  - {fileID: 21300000, guid: 97eb33f17282b874aafc04781652f343, type: 3}
-  - {fileID: 21300000, guid: 6e2d9e76728b86841bcb3fc15b91bdd4, type: 3}
-  - {fileID: 21300000, guid: 4ad16adfdf2d1a441879a598de742eb6, type: 3}
-  - {fileID: 21300000, guid: 31d9fd9a71fd2fa46b253808d9db9ab2, type: 3}
-  - {fileID: 21300000, guid: 97eb33f17282b874aafc04781652f343, type: 3}
-  - {fileID: 21300000, guid: 6e2d9e76728b86841bcb3fc15b91bdd4, type: 3}
-  - {fileID: 21300000, guid: 4ad16adfdf2d1a441879a598de742eb6, type: 3}
-  - {fileID: 21300000, guid: 31d9fd9a71fd2fa46b253808d9db9ab2, type: 3}
-  - {fileID: 21300000, guid: 97eb33f17282b874aafc04781652f343, type: 3}
-  - {fileID: 21300000, guid: 6e2d9e76728b86841bcb3fc15b91bdd4, type: 3}
-  - {fileID: 21300000, guid: 4ad16adfdf2d1a441879a598de742eb6, type: 3}
-  - {fileID: 21300000, guid: 31d9fd9a71fd2fa46b253808d9db9ab2, type: 3}
-  - {fileID: 21300000, guid: 97eb33f17282b874aafc04781652f343, type: 3}
-  - {fileID: 21300000, guid: 6e2d9e76728b86841bcb3fc15b91bdd4, type: 3}
-  - {fileID: 21300000, guid: 4ad16adfdf2d1a441879a598de742eb6, type: 3}
-  - {fileID: 21300000, guid: 31d9fd9a71fd2fa46b253808d9db9ab2, type: 3}
-  - {fileID: 21300000, guid: 97eb33f17282b874aafc04781652f343, type: 3}
-  - {fileID: 21300000, guid: 6e2d9e76728b86841bcb3fc15b91bdd4, type: 3}
-  item_image: {fileID: 2041302179}
-  item_text: {fileID: 364423227}
+  tower_ad_text: {fileID: 0}
+  tower_as_text: {fileID: 0}
+  tower_Level_text: {fileID: 0}
+  tower_itemLevel_text: {fileID: 0}
+  tower_q_text: {fileID: 0}
+  tower_uplevel_text: {fileID: 0}
+  levelupcost: 000000000000000000000000000000000000000000000000000000000000000000000000
+  nocheck: {fileID: 0}
+  meSkill_sprite: []
+  RanSkill_sprite: []
+  meSkill_image: {fileID: 0}
+  RanSkill_image: {fileID: 0}
+  textInfo_text: {fileID: 0}
 --- !u!1 &1400883886
 GameObject:
   m_ObjectHideFlags: 0
@@ -35196,15 +35197,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2dda8496dc7e34fbcbb25ccd21153c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ui: {fileID: 0}
+  onclick: 0
+  setting: {fileID: 0}
   Mycamera: {fileID: 588423894}
-  ClickObject: {fileID: 0}
   BuildingClickButton: {fileID: 0}
   BuildingReadyTile: {fileID: 0}
   BuildingReadyBool: 0
   uiClick_Evenet: {fileID: 0}
+  posz: {x: 0, y: 0, z: 0}
+  layermask:
+    serializedVersion: 2
+    m_Bits: 0
   LevelTower_build: 0
+  selectlevelint: 0
   gamedata: {fileID: 0}
+  ClickObject: {fileID: 0}
+  towerObject: {fileID: 0}
+  tileObject: {fileID: 0}
   clickState: 0
+  playerState: 0
 --- !u!114 &2079770367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35219,10 +35231,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TowerUI: {fileID: 1390195002}
   EnemyUI: {fileID: 409171481}
-  Levelint: 0
   Tower: {fileID: 0}
   skill_info: {fileID: 144150175}
-  item_info: {fileID: 206209091}
 --- !u!1 &2080962594
 GameObject:
   m_ObjectHideFlags: 0

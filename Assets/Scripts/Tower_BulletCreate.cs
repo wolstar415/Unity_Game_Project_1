@@ -805,14 +805,14 @@ public void BulletCreate_T_26()
     {
         int con = 0;
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.25f);
         towerstat.AttackCont++;
         effect[1].SetActive(true);
 
         while (con <10)
         {
             con++;
-            RaycastHit[] hits = Physics.SphereCastAll(gameObject.transform.position, 1f, transform.forward);
+            RaycastHit[] hits = Physics.SphereCastAll(gameObject.transform.position, 1f, transform.GetChild(3).transform.forward);
 
             if (hits.Length > 0)
             {
@@ -974,9 +974,9 @@ public void BulletCreate_T_26()
     IEnumerator BulletCreate_T_33_ac()
     {
         GameObject[] Attackenemy =new GameObject[3];
-        gameObject.transform.GetChild(3).GetComponent<Animation>().Play("Attack");
-        gameObject.transform.GetChild(4).GetComponent<Animation>().Play("Attack");
-        gameObject.transform.GetChild(5).GetComponent<Animation>().Play("Attack");
+        effect[1].GetComponent<Animation>().Play("Attack");
+        effect[2].GetComponent<Animation>().Play("Attack");
+        effect[3].GetComponent<Animation>().Play("Attack");
         yield return new WaitForSeconds(0.2f);
         int con = 0;
         for (int i = 0; i < tower_controll.enemies.Count; i++)
@@ -1044,9 +1044,9 @@ public void BulletCreate_T_26()
             bullet3.GetComponent<BulletState>().Target = Attackenemy[0];
         }
         yield return new WaitForSeconds(0.3f);
-        gameObject.transform.GetChild(3).GetComponent<Animation>().Play("Idle");
-        gameObject.transform.GetChild(4).GetComponent<Animation>().Play("Idle");
-        gameObject.transform.GetChild(5).GetComponent<Animation>().Play("Idle");
+        effect[1].GetComponent<Animation>().Play("Idle");
+        effect[2].GetComponent<Animation>().Play("Idle");
+        effect[3].GetComponent<Animation>().Play("Idle");
     }
     public void BulletCreate_T_34() // 나무도끼
     {
@@ -1278,7 +1278,7 @@ public void BulletCreate_T_26()
         towerstat._animator.Play("Attack");
 
         yield return new WaitForSeconds(0.2f);
-        GameObject Effect01 = Instantiate(effect[1], transform.position + new Vector3(0f, 0.3f, 0f), transform.rotation);
+        GameObject Effect01 = Instantiate(effect[1], transform.position + new Vector3(0f, 0.3f, 0f), transform.GetChild(3).transform.rotation);
         Effect01.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
         Destroy(Effect01, 0.5f);
         int con = 0;

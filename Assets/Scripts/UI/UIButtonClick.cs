@@ -17,6 +17,8 @@ public class UIButtonClick : MonoBehaviour
     public TextMeshProUGUI level_Info_Text;
 
     public GameObject MoneyIcon;
+    public GameObject MoneyIcon2;
+    public GameObject MoneyIcon3;
 
     [Header("설정")]
     public Slider slider;
@@ -53,6 +55,8 @@ public class UIButtonClick : MonoBehaviour
             "Tower 2 : " + GameObject.Find("GameData").GetComponent<GameData>().Tower_Level2_Per[i] + "%\n" +
             "Tower 3 : " + GameObject.Find("GameData").GetComponent<GameData>().Tower_Level3_Per[i] + "%";
             MoneyIcon.SetActive(false);
+            MoneyIcon2.SetActive(false);
+            MoneyIcon3.GetComponent<RectTransform>().position= MoneyIcon3.GetComponent<RectTransform>().position+new Vector3(120f,0,0);
         }
         else
         {
@@ -149,7 +153,7 @@ public class UIButtonClick : MonoBehaviour
     public void Restart()
     {
 
-        SceneManager.LoadScene("03_Play");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
     }
     public void Exit()
