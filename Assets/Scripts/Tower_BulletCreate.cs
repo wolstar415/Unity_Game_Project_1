@@ -1893,7 +1893,7 @@ public void BulletCreate_T_26()
     IEnumerator BulletCreate_T_59_Ac()
     {
 
-        yield return new WaitForSeconds(0.10f);
+        yield return new WaitForSeconds(0.30f);
         towerstat.AttackCont++;
         effect[1].SetActive(true);
 
@@ -1912,7 +1912,7 @@ public void BulletCreate_T_26()
 
 
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.21f);
 
 
         effect[1].SetActive(false);

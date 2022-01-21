@@ -7251,6 +7251,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9094767599562220921, guid: b97afc17739e3744d98f620fbd0e3904, type: 3}
+      propertyPath: movespeed
+      value: 700
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2687550359811401704, guid: b97afc17739e3744d98f620fbd0e3904, type: 3}
     - {fileID: 135975656248482850, guid: b97afc17739e3744d98f620fbd0e3904, type: 3}
@@ -14586,8 +14590,8 @@ MonoBehaviour:
   Roundtext: {fileID: 165661442}
   Goldtext: {fileID: 610060936}
   Pointtext: {fileID: 8438742}
-  Gameover_GameOject: {fileID: 0}
-  GameVictory_GameOject: {fileID: 0}
+  Gameover_GameOject: {fileID: 874780592}
+  GameVictory_GameOject: {fileID: 2005288032}
 --- !u!1001 &466264575
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32351,7 +32355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1005339615}
   m_Layer: 5
-  m_Name: GameOver
+  m_Name: GameOverOJ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

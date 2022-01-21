@@ -83,8 +83,7 @@ public class GameInfo : MonoBehaviour
     }
     void Start()  // 처음 시작시 실행되는 함수입니다.
     {
-        Gameover_GameOject = GameObject.Find("GameOver");
-        GameVictory_GameOject = GameObject.Find("GameVictory");
+
         try
         {
         int i = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().di;

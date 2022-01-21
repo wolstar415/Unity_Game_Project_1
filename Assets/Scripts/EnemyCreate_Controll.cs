@@ -53,7 +53,7 @@ public class EnemyCreate_Controll : MonoBehaviour
         {
             float add = tower.GetComponent<TowerStat>().Damage * (I_level * 0.01f);
             tower.GetComponent<TowerStat>().Item_AD += add;
-            GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect( add.ToString("F0")+ "+AD", Color.red, tower.transform.position, 1f);
+            GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect( add.ToString("F0")+ "AD+", Color.red, tower.transform.position, 1.5f);
 
         }
         else if (I_index == 11)
@@ -61,7 +61,7 @@ public class EnemyCreate_Controll : MonoBehaviour
             if (gameInfo.Round % I_level == 0)
             {
                 gameInfo.GoldCheck(1);
-                GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+1G", Color.yellow, tower.transform.position, 1f);
+                GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+1G", Color.yellow, tower.transform.position, 1.5f);
 
             }
 
@@ -274,6 +274,7 @@ public class EnemyCreate_Controll : MonoBehaviour
         //StartCoroutine(StartRoundGo(Time, EnemyCnt - 1));
         }
             yield return new WaitUntil(() => gameInfo.deadCon >=gameInfo.RoundCnt);
+            yield return new WaitForSeconds(1f);
             //Debug.Log("라운드시작"+ gameInfo.Round);
             if (EnemyObjectRan.Count>1)
             {

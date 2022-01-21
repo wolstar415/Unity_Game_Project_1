@@ -12445,8 +12445,8 @@ MonoBehaviour:
   Roundtext: {fileID: 165661442}
   Goldtext: {fileID: 610060936}
   Pointtext: {fileID: 8438742}
-  Gameover_GameOject: {fileID: 0}
-  GameVictory_GameOject: {fileID: 0}
+  Gameover_GameOject: {fileID: 201609540}
+  GameVictory_GameOject: {fileID: 1548469629}
 --- !u!1001 &466264575
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22358,7 +22358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 826915266}
   m_Layer: 5
-  m_Name: GameOver
+  m_Name: GameOverOJ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
