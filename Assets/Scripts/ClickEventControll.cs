@@ -241,6 +241,7 @@ public class ClickEventControll : MonoBehaviour
             tower.GetComponent<TowerStat>().TileNum = hit.collider.gameObject.GetComponent<TlieObject>().TowerTileNum;
             qualityGo(tower);
             tower.GetComponent<TowerStat>().itemCreate();
+            tower.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().enabled = false;
 
 
         }
@@ -256,6 +257,7 @@ public class ClickEventControll : MonoBehaviour
             tower.GetComponent<TowerStat>().TileNum = hit.collider.gameObject.GetComponent<TlieObject>().TowerTileNum;
             qualityGo(tower);
             tower.GetComponent<TowerStat>().itemCreate();
+            tower.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().enabled = false;
         }
         else
         {
@@ -269,9 +271,10 @@ public class ClickEventControll : MonoBehaviour
             tower.GetComponent<TowerStat>().TileNum = hit.collider.gameObject.GetComponent<TlieObject>().TowerTileNum;
             qualityGo(tower);
             tower.GetComponent<TowerStat>().itemCreate();
-
+            tower.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().enabled = false;
         }
 
+        
 
 
 
@@ -377,16 +380,22 @@ public class ClickEventControll : MonoBehaviour
                         if (GameObject.Find("GameInfo").GetComponent<GameInfo>().Gold >= 30) // 돈이 있을때
                         {
                             GameObject.Find("GameInfo").GetComponent<GameInfo>().GoldCheck(-30);
-
+                            GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("-30G",Color.yellow, hit.collider.transform.position);
                             towerbuild();
                             onclick = false;
                             //clickState = ClickEventControll.ClickState.Tower;
                         }
+                        else
+                        {
+                            GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("No GOLD(30)", Color.yellow, hit.collider.transform.position);
+                        }
+                        
                         initi();
 
                     }
                     else
                     {
+                        
 
                         ClickObject = hit.collider.gameObject;
                         //BuildingClickButton.SetActive(true);
@@ -700,6 +709,7 @@ public class ClickEventControll : MonoBehaviour
                 //ClickObject.transform.position = new Vector3(objPosition.x, 1.5f, objPosition.z);
                 //
                 ClickObject.transform.GetChild(3).position = new Vector3(objPosition.x, 1.5f, objPosition.z);
+               
                 //
                 //Debug.Log(Input.mousePosition.y);
 

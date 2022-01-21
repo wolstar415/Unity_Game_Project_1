@@ -20,8 +20,11 @@ public class GameInfo : MonoBehaviour
     public int con_Enemy;
 
     public bool Gameover=false;
+    public bool Victory=false;
 
     public int deadCon=0;
+
+    public int final_Round=70;
 
     public enum Difficulty
     {
@@ -43,7 +46,8 @@ public class GameInfo : MonoBehaviour
     public TextMeshProUGUI Goldtext;
     public TextMeshProUGUI Pointtext;
 
-
+    public GameObject Gameover_GameOject;
+    public GameObject GameVictory_GameOject;
     public void GameOver()
     {
         Gameover = true;
@@ -65,9 +69,22 @@ public class GameInfo : MonoBehaviour
             damagetext2[i].transform.position = new Vector3(1000f, 1000f, 1000f);
             Destroy(damagetext2[i], 2.0f);
         }
+        Gameover_GameOject.SetActive(true);
+        Time.timeScale = 0f;
+
+
+    }
+
+    public void GameVictory()
+    {
+        Victory = true;
+        GameVictory_GameOject.SetActive(true);
+        //Time.timeScale = 0f;
     }
     void Start()  // 처음 시작시 실행되는 함수입니다.
     {
+        Gameover_GameOject = GameObject.Find("GameOver");
+        GameVictory_GameOject = GameObject.Find("GameVictory");
         try
         {
         int i = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().di;
@@ -79,6 +96,42 @@ public class GameInfo : MonoBehaviour
             if ( i >= 4)
             {
                 LifeCheck(-19);
+            }
+            if (i==1)
+            {
+                Gold = 180;
+                Point = 5;
+                final_Round = 50;
+            }
+            if (i == 2)
+            {
+                Gold = 170;
+                Point = 4;
+                final_Round = 60;
+            }
+            if (i == 3)
+            {
+                Gold = 160;
+                Point = 3;
+                final_Round = 70;
+            }
+            if (i == 4)
+            {
+                Gold = 150;
+                Point = 2;
+                final_Round = 80;
+            }
+            if (i == 5)
+            {
+                Gold = 140;
+                Point = 1;
+                final_Round = 90;
+            }
+            if (i == 6)
+            {
+                Gold = 130;
+                Point = 0;
+                final_Round = 95;
             }
         }
         catch (System.Exception)
@@ -115,6 +168,11 @@ public class GameInfo : MonoBehaviour
         {
             GameOver();
         }
+        GameObject gg = GameObject.Find("HeartText");
+        Vector3 mousePositionc = new Vector3(gg.transform.position.x - 100f,
+gg.transform.position.y - 60f, Camera.main.WorldToScreenPoint(gg.transform.position).z);
+        GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect(g.ToString(), Color.red, Camera.main.ScreenToWorldPoint(mousePositionc), 2f);
+
     }
     public void RoundSet(int g)
     {

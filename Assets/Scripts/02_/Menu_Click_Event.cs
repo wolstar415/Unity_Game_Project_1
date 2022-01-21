@@ -149,7 +149,7 @@ public class Menu_Click_Event : MonoBehaviour
             return;
         }
         moveint--;
-
+        rectTransformList[moveint] = new Vector3(rectTransformList[moveint].x, Map2.GetComponent<RectTransform>().position.y, rectTransformList[moveint].z);
         Map2.GetComponent<RectTransform>().position = rectTransformList[moveint];
 
 
@@ -161,7 +161,7 @@ public class Menu_Click_Event : MonoBehaviour
             return;
         }
         moveint++;
-
+        rectTransformList[moveint] = new Vector3(rectTransformList[moveint].x, Map2.GetComponent<RectTransform>().position.y, rectTransformList[moveint].z);
         Map2.GetComponent<RectTransform>().position = rectTransformList[moveint];
 
     }

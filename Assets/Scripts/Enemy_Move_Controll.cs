@@ -68,6 +68,7 @@ public class Enemy_Move_Controll : MonoBehaviour
 
     void LifeMin()
     {
+        
         if (gameObject.GetComponent<EnemyStat>().Boss ==false)
         {
             //GameObject.Find("GameInfo").GetComponent<GameInfo>().Life = GameObject.Find("GameInfo").GetComponent<GameInfo>().Life - 1;
@@ -75,7 +76,16 @@ public class Enemy_Move_Controll : MonoBehaviour
         }
         else
         {
+            if (gameObject.GetComponent<EnemyStat>().f_Boss)
+            {
+            GameObject.Find("GameInfo").GetComponent<GameInfo>().GameOver();
+
+            }
+            else
+            {
             GameObject.Find("GameInfo").GetComponent<GameInfo>().LifeCheck(-10);
+
+            }
 
             //GameObject.Find("GameInfo").GetComponent<GameInfo>().Life = GameObject.Find("GameInfo").GetComponent<GameInfo>().Life - 10;
         }

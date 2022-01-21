@@ -413,8 +413,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower_controll: {fileID: 0}
-  buff_AD: 10
-  buff_ADP: 0
+  buff_AD: 0
+  buff_ADP: 10
   buff_AS: 0
   buff_RANG: 0
   buff_criP: 0

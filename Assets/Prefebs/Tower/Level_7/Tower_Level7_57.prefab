@@ -237,7 +237,7 @@ MonoBehaviour:
   DoubleAt: 0
   DoubleAtPer: 0
   Rang: 0
-  TowerIndex: 41
+  TowerIndex: 57
   Level: 7
   quality: 0
   AttackCont: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6070590ee601c045a569b22c08a4a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet00: {fileID: 1089784704224575367, guid: 7d4b66d8f96109244b4c567dfc0e645d, type: 3}
+  Bullet00: {fileID: 1089784704224575367, guid: 87ffee50da4f57e4aba6fbe5025614e0, type: 3}
   Enemy: {fileID: 0}
   tower_controll: {fileID: 0}
   towerstat: {fileID: 0}

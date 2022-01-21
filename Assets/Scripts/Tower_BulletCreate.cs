@@ -812,7 +812,7 @@ public void BulletCreate_T_26()
         while (con <10)
         {
             con++;
-            RaycastHit[] hits = Physics.SphereCastAll(gameObject.transform.position, 1f, transform.GetChild(3).transform.forward);
+            RaycastHit[] hits = Physics.SphereCastAll(gameObject.transform.position, 0.5f, transform.GetChild(3).transform.forward,10f);
 
             if (hits.Length > 0)
             {
@@ -1583,6 +1583,340 @@ public void BulletCreate_T_26()
         yield return new WaitUntil(() => gameObject.GetComponent<Tower_Controll>().enemies.Count == 0);
         towerstat._animator.Play("Idle");
         my_coroutine_is_running[0] = false;
+    }
+
+
+    public void BulletCreate_T_50()
+    {
+        towerstat._animator.Play("Attack");
+        StartCoroutine(BulletCreate_T_50_AC(Enemy));
+
+
+
+    }
+
+
+
+    IEnumerator BulletCreate_T_50_AC(GameObject enemy)
+    {
+        yield return new WaitForSeconds(0.2f);
+        if (enemy.gameObject.GetComponent<EnemyStat>().Dead)
+        {
+            yield break;
+        }
+
+        towerstat.AttackCont++;
+
+        float _Damage = towerstat.DamageF();
+        GameObject Effect01 = Instantiate(effect[0], enemy.transform.position + new Vector3(0f, 0.3f, 0f), enemy.transform.rotation);
+        Effect01.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        Destroy(Effect01, 0.5f);
+        enemy.gameObject.GetComponent<EnemyStat>().DamageTrigger(gameObject, _Damage);
+
+    }
+
+    public void BulletCreate_T_51()
+    {
+        towerstat._animator.Play("Attack");
+        StartCoroutine(BulletCreate_T_51_AC(Enemy));
+
+
+
+    }
+
+
+
+    IEnumerator BulletCreate_T_51_AC(GameObject enemy)
+    {
+        yield return new WaitForSeconds(0.20f);
+        if (enemy.gameObject.GetComponent<EnemyStat>().Dead)
+        {
+            yield break;
+        }
+
+        towerstat.AttackCont++;
+
+        float _Damage = towerstat.DamageF();
+        GameObject Effect01 = Instantiate(effect[0], enemy.transform.position + new Vector3(0f, 0.3f, 0f), enemy.transform.rotation);
+        Effect01.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        Destroy(Effect01, 0.5f);
+        enemy.gameObject.GetComponent<EnemyStat>().DamageTrigger(gameObject, _Damage);
+
+    }
+
+    public void BulletCreate_T_52()
+    {
+        towerstat._animator.Play("Attack");
+        StartCoroutine(BulletCreate_T_52_AC(Enemy));
+
+
+
+    }
+
+
+
+    IEnumerator BulletCreate_T_52_AC(GameObject enemy)
+    {
+        float f = UnityEngine.Random.Range(0f, 100f);
+        yield return new WaitForSeconds(0.15f);
+        if (enemy.gameObject.GetComponent<EnemyStat>().Dead)
+        {
+            yield break;
+        }
+
+        towerstat.AttackCont++;
+
+
+        float _Damage = towerstat.DamageF();
+
+        if (f <= 15)
+        {
+            _Damage = _Damage*2;
+        }
+        GameObject Effect01 = Instantiate(effect[0], enemy.transform.position + new Vector3(0f, 0.3f, 0f), enemy.transform.rotation);
+        Effect01.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        Destroy(Effect01, 0.5f);
+        enemy.gameObject.GetComponent<EnemyStat>().DamageTrigger(gameObject, _Damage);
+
+    }
+
+
+
+    public void BulletCreate_T_53() // 
+    {
+        towerstat._animator.Play("Attack");
+        StartCoroutine(BulletCreate_T_53_AC(Enemy));
+    }
+    IEnumerator BulletCreate_T_53_AC(GameObject enemy) // 
+    {
+        yield return new WaitForSeconds(0.25f);
+        if (enemy.gameObject.GetComponent<EnemyStat>().Dead)
+        {
+            yield break;
+        }
+        GameObject bullet = Instantiate(Bullet00);
+        bullet.transform.position = transform.position;
+        bullet.GetComponent<BulletState>().MyTower = gameObject;
+        bullet.GetComponent<BulletState>().Target = enemy;
+        bullet.transform.position = new Vector3(bullet.transform.position.x, 0.5f, bullet.transform.position.z);
+        bullet.transform.LookAt(Enemy.transform);
+        Destroy(bullet, 2f);
+    }
+
+
+
+
+
+    public void BulletCreate_T_54()
+    {
+        towerstat._animator.Play("Attack");
+        StartCoroutine(BulletCreate_T_54_AC(Enemy));
+
+
+
+    }
+
+
+
+    IEnumerator BulletCreate_T_54_AC(GameObject enemy)
+    {
+        float f = UnityEngine.Random.Range(0f, 100f);
+        yield return new WaitForSeconds(0.3f);
+        if (enemy.gameObject.GetComponent<EnemyStat>().Dead)
+        {
+            yield break;
+        }
+
+        towerstat.AttackCont++;
+
+
+        float _Damage = towerstat.DamageF();
+
+        
+        GameObject Effect01 = Instantiate(effect[0], enemy.transform.position + new Vector3(0f, 0.3f, 0f), enemy.transform.rotation);
+        Effect01.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        Destroy(Effect01, 0.5f);
+        if (towerstat.AttackCont==1)
+        {
+
+        enemy.gameObject.GetComponent<EnemyStat>().DamageTrigger(gameObject, _Damage,towerstat.DoubleAtPerF());
+        }
+        else
+        {
+        enemy.gameObject.GetComponent<EnemyStat>().DamageTrigger(gameObject, _Damage);
+
+        }
+
+    }
+
+
+    public void BulletCreate_T_55() // 
+    {
+        towerstat._animator.Play("Attack");
+        StartCoroutine(BulletCreate_T_55_AC(Enemy));
+    }
+    IEnumerator BulletCreate_T_55_AC(GameObject enemy) // 
+    {
+        yield return new WaitForSeconds(0.25f);
+        if (enemy.gameObject.GetComponent<EnemyStat>().Dead)
+        {
+            yield break;
+        }
+        GameObject bullet = Instantiate(Bullet00);
+        bullet.transform.position = transform.position;
+        bullet.GetComponent<BulletState>().MyTower = gameObject;
+        bullet.GetComponent<BulletState>().Target = enemy;
+        bullet.transform.position = new Vector3(bullet.transform.position.x, 0.5f, bullet.transform.position.z);
+        bullet.transform.LookAt(Enemy.transform);
+        Destroy(bullet, 2f);
+    }
+
+
+    public void BulletCreate_T_56()
+    {
+        towerstat._animator.Play("Attack");
+        StartCoroutine(BulletCreate_T_56_AC(Enemy));
+
+
+
+    }
+
+
+
+    IEnumerator BulletCreate_T_56_AC(GameObject enemy)
+    {
+        float f = UnityEngine.Random.Range(0f, 100f);
+        yield return new WaitForSeconds(0.15f);
+        if (enemy.gameObject.GetComponent<EnemyStat>().Dead)
+        {
+            yield break;
+        }
+
+        towerstat.AttackCont++;
+
+
+        float _Damage = towerstat.DamageF();
+
+        if (f <= 15)
+        {
+            _Damage = _Damage * 2;
+        }
+        GameObject Effect01 = Instantiate(effect[0], enemy.transform.position + new Vector3(0f, 0.3f, 0f), enemy.transform.rotation);
+        Effect01.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        Destroy(Effect01, 0.5f);
+        enemy.gameObject.GetComponent<EnemyStat>().DamageTrigger(gameObject, _Damage);
+
+    }
+
+
+    public void BulletCreate_T_57()
+    {
+        StartCoroutine(BulletCreate_T_57_ac());
+
+
+
+    }
+    IEnumerator BulletCreate_T_57_ac()
+    {
+
+        towerstat._animator.Play("Attack");
+
+        yield return new WaitForSeconds(0.15f);
+        for (int i = 0; i < tower_controll.enemies.Count; i++)
+        {
+ 
+
+
+                GameObject bullet = Instantiate(Bullet00);
+                bullet.transform.position = transform.position;
+                bullet.GetComponent<BulletState>().MyTower = gameObject;
+                //z
+                bullet.GetComponent<BulletState>().Target = tower_controll.enemies[i];
+
+
+
+
+        }
+    }
+
+    public void BulletCreate_T_58()
+    {
+        //towerstat._animator.Play("Attack");
+
+        StartCoroutine(BulletCreate_T_58_Ac());
+
+
+
+    }
+
+    IEnumerator BulletCreate_T_58_Ac()
+    {
+        int con = 0;
+
+        yield return new WaitForSeconds(0.25f);
+        towerstat.AttackCont++;
+        effect[1].SetActive(true);
+
+        while (con < 5)
+        {
+            con++;
+            RaycastHit[] hits = Physics.SphereCastAll(gameObject.transform.position, 0.5f, transform.GetChild(3).transform.forward,3f);
+
+            if (hits.Length > 0)
+            {
+                for (int i = 0; i < hits.Length; i++)
+                {
+                    if (hits[i].transform.tag == "Enemy")
+                    {
+                        hits[i].transform.GetComponent<EnemyStat>().DamageTrigger(gameObject, towerstat.DamageF());
+                    }
+                }
+            }
+
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        effect[1].SetActive(false);
+
+    }
+
+    public void BulletCreate_T_59()
+    {
+        towerstat._animator.Play("Attack");
+
+        StartCoroutine(BulletCreate_T_59_Ac());
+
+
+
+    }
+
+    IEnumerator BulletCreate_T_59_Ac()
+    {
+
+        yield return new WaitForSeconds(0.10f);
+        towerstat.AttackCont++;
+        effect[1].SetActive(true);
+
+        RaycastHit[] hits = Physics.SphereCastAll(gameObject.transform.position, 0.5f, transform.GetChild(3).transform.forward,3f);
+
+        if (hits.Length > 0)
+        {
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (hits[i].transform.tag == "Enemy")
+                {
+                    hits[i].transform.GetComponent<EnemyStat>().DamageTrigger(gameObject, towerstat.DamageF());
+                }
+            }
+        }
+
+
+
+        yield return new WaitForSeconds(0.1f);
+
+
+        effect[1].SetActive(false);
+
     }
 
     public IEnumerator DamageTime(GameObject tower,GameObject enemy,float time,float damage,float AddCriP=0f,float AddCriD=0f)

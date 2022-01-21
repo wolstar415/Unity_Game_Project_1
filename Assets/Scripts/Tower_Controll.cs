@@ -22,6 +22,8 @@ public class Tower_Controll : MonoBehaviour
     public bool AttackCool=false;
     public bool noAni=false;
 
+    bool Tower_7 = false;
+
     Quaternion startrotation;
 
 
@@ -49,6 +51,11 @@ public class Tower_Controll : MonoBehaviour
         switch (towerstate)
         {
             case TowerState.IDLE:
+                if ((tower_stat.TowerIndex == 7 || tower_stat.TowerIndex == 22) && Tower_7==true)
+                {
+                    tower_stat._animator.Play("AC_1");
+                    Tower_7=false;
+                }
                 //AttackCurTime = 0;
                 if (enemies.Count > 0)
                 {
@@ -122,6 +129,11 @@ public class Tower_Controll : MonoBehaviour
 
                 if (AttackCool && targetObject != null)
                 {
+                    if ((tower_stat.TowerIndex == 7 || tower_stat.TowerIndex == 22) && Tower_7 == false)
+                    {
+                        tower_stat._animator.Play("AC_2");
+                        Tower_7 = true;
+                    }
                     AttackCool = false;
                     GetComponent<Tower_BulletCreate>().Enemy= targetObject;
                     //GetComponent<Tower_BulletCreate>().tower= targetObject;

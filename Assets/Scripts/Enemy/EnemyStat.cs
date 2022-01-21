@@ -24,6 +24,7 @@ public class EnemyStat : MonoBehaviour
     public float DefenceInit;
     public bool Dead;
     public bool Boss;
+    public bool f_Boss;
     public EnemySystem enemySystem;
 
 
@@ -87,29 +88,39 @@ public class EnemyStat : MonoBehaviour
 
     public void StunGo(float Time)
     {
-        if (Time <= 0)
+        float t = Time;
+        if (Boss)
+        {
+            t = t / 2;
+        }
+        if (t <= 0)
         {
             return;
         }
         if (StunCoolTime <=0)
         {
             Stun = true;
-            gameObject.transform.GetChild(2).gameObject.SetActive(true);
+            gameObject.transform.GetChild(1).gameObject.SetActive(true);
             StunCurTime = 0f;
         }
-        StunCoolTime += Time;
+        StunCoolTime += t;
     }
     public void StunGo2(float Time)
     {
-        if (Time <= 0)
+        float t = Time;
+        if (Boss)
+        {
+            t = t / 2;
+        }
+        if (t <= 0)
         {
             return;
         }
             Stun = true;
-        gameObject.transform.GetChild(2).gameObject.SetActive(true);
+        gameObject.transform.GetChild(1).gameObject.SetActive(true);
         StunCurTime = 0f;
 
-        StunCoolTime = Time;
+        StunCoolTime = t;
     }
     void Update() // 매 프레임마다 실행되는 함수입니다.
     {
@@ -128,7 +139,7 @@ public class EnemyStat : MonoBehaviour
                 StunCoolTime = 0f;
                 StunCurTime = 0f;
                 Stun = false;
-                gameObject.transform.GetChild(2).gameObject.SetActive(false);
+                gameObject.transform.GetChild(1).gameObject.SetActive(false);
             }
         }
     }
@@ -267,7 +278,7 @@ public class EnemyStat : MonoBehaviour
         bool cri = false;
         float de = Defence();
 
-        float Dafenceper = (de * 0.05f) / (1 - (de * 0.05f));
+        float Dafenceper = (de * 0.05f) / (1 + (de * 0.05f));
 
         if (I_index==15)
         {
@@ -349,15 +360,46 @@ public class EnemyStat : MonoBehaviour
                 if (G_r <= tower.GetComponent<TowerStat>().Item_Level *20)
                 {
                     GameObject.Find("GameInfo").GetComponent<GameInfo>().GoldCheck(1);
+                    GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+1G", Color.yellow, tower.transform.position, 1f);
+
                 }
             }
+
             Dead = true;
             GameObject.Find("GameInfo").GetComponent<GameInfo>().con_Enemy--;
             GameObject.Find("GameInfo").GetComponent<GameInfo>().GoldCheck(GetMoney);
 
+
+            if (f_Boss)
+            {
+                GameObject.Find("GameInfo").GetComponent<GameInfo>().GameVictory();
+                //GameObject.Find("GameInfo").GetComponent<GameInfo>().PointCheck(4);
+            }
             if (Boss)
             {
-                //GameObject.Find("GameInfo").GetComponent<GameInfo>().PointCheck(4);
+                GameObject g = GameObject.Find("Gold_Text");
+                Vector3 mousePositionc = new Vector3(g.transform.position.x - 50f,
+        g.transform.position.y - 60f, Camera.main.WorldToScreenPoint(g.transform.position).z);
+                GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+20G", Color.yellow, Camera.main.ScreenToWorldPoint(mousePositionc), 1.5f);
+
+                GameObject p = GameObject.Find("Point_Text");
+                Vector3 mousePosition = new Vector3(p.transform.position.x - 50f,
+        p.transform.position.y - 60f, Camera.main.WorldToScreenPoint(p.transform.position).z);
+                GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+2P", Color.cyan, Camera.main.ScreenToWorldPoint(mousePosition), 1.5f);
+
+                //GameObject.Find("GameInfo").GetComponent<GameInfo>().GameVictory();
+                GameObject.Find("GameInfo").GetComponent<GameInfo>().PointCheck(2);
+                //GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+20G", Color.yellow, tower.transform.position, 1f);
+                //Vector3 asd = new Vector3(tower.transform.position.x + 50, tower.transform.position.y, tower.transform.position.z);
+                //GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+2P", Color.cyan, asd, 1f);
+            }
+            else
+            {
+                GameObject g = GameObject.Find("Gold_Text");
+                Vector3 mousePositionc = new Vector3(g.transform.position.x - 50f,
+        g.transform.position.y - 60f, Camera.main.WorldToScreenPoint(g.transform.position).z);
+                GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+1G", Color.yellow, Camera.main.ScreenToWorldPoint(mousePositionc), 1.5f);
+
             }
             // GameObject.Find("GameInfo").GetComponent<GameInfo>().Gold += GetMoney;
 

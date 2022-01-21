@@ -42,10 +42,22 @@ public class UIButtonClick : MonoBehaviour
 
         if (GameObject.Find("GameInfo").GetComponent<GameInfo>().Gold <25 || GameObject.Find("GameInfo").GetComponent<GameInfo>().Level >= 10)
         {
+            Vector3 mousePositionc = new Vector3(MoneyIcon.transform.position.x,
+       MoneyIcon.transform.position.y, Camera.main.WorldToScreenPoint(MoneyIcon.transform.position).z);
+            //Vector3 mousePosition = new Vector3(Input.mousePosition.x,
+            //Input.mousePosition.y+100f, Camera.main.WorldToScreenPoint(Input.mousePosition).z);
+            GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("No GOLD", Color.yellow, Camera.main.ScreenToWorldPoint(mousePositionc), 1f);
             return;
         }
         
         GameObject.Find("GameInfo").GetComponent<GameInfo>().GoldCheck(-25);
+        
+            Vector3 mousePosition = new Vector3(MoneyIcon.transform.position.x,
+       MoneyIcon.transform.position.y, Camera.main.WorldToScreenPoint(MoneyIcon.transform.position).z);
+        //Vector3 mousePosition = new Vector3(Input.mousePosition.x,
+        //Input.mousePosition.y+100f, Camera.main.WorldToScreenPoint(Input.mousePosition).z);
+        GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("-25G", Color.yellow, Camera.main.ScreenToWorldPoint(mousePosition),2f);
+
         GameObject.Find("GameInfo").GetComponent<GameInfo>().Level++;
         i++;
         if (GameObject.Find("GameInfo").GetComponent<GameInfo>().Level == 10)
@@ -292,6 +304,9 @@ public class UIButtonClick : MonoBehaviour
 
 
         GameObject.Find("GameInfo").GetComponent<GameInfo>().PointCheck(-1);
+        Vector3 mousePosition = new Vector3(Input.mousePosition.x,
+            Input.mousePosition.y + 0f, Camera.main.WorldToScreenPoint(Input.mousePosition).z);
+        GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("-1P", Color.cyan, Camera.main.ScreenToWorldPoint(mousePosition), 2f);
         GameObject g = GameObject.Find("Tower_GameInfo").GetComponent<UI_Tower_Info>().Tower;
         GameObject z = GameObject.Find("ClickEventControll").GetComponent<ClickEventControll>().Chantower(g);
 
@@ -364,6 +379,9 @@ public class UIButtonClick : MonoBehaviour
 
 
         GameObject.Find("GameInfo").GetComponent<GameInfo>().PointCheck(-levelupcost[GameObject.Find("Tower_GameInfo").GetComponent<UI_Tower_Info>().Tower.GetComponent<TowerStat>().Level]);
+        Vector3 mousePosition = new Vector3(Input.mousePosition.x,
+            Input.mousePosition.y + 0f, Camera.main.WorldToScreenPoint(Input.mousePosition).z);
+        GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect(-levelupcost[GameObject.Find("Tower_GameInfo").GetComponent<UI_Tower_Info>().Tower.GetComponent<TowerStat>().Level]+"P", Color.cyan, Camera.main.ScreenToWorldPoint(mousePosition), 2f);
         GameObject g = GameObject.Find("Tower_GameInfo").GetComponent<UI_Tower_Info>().Tower;
 
 
