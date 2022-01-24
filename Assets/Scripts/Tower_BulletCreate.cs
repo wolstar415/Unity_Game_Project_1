@@ -1919,6 +1919,61 @@ public void BulletCreate_T_26()
 
     }
 
+
+
+    public void BulletCreate_T_60() // 3명공격
+    {
+        StartCoroutine(BulletCreate_T_60_ac());
+
+
+
+    }
+    IEnumerator BulletCreate_T_60_ac()
+    {
+        GameObject[] Attackenemy = new GameObject[3];
+        effect[1].GetComponent<Animator>().Play("Attack");
+        effect[2].GetComponent<Animator>().Play("Attack");
+        yield return new WaitForSeconds(0.1f);
+        int con = 0;
+        for (int i = 0; i < tower_controll.enemies.Count; i++)
+        {
+            if (con >= 2)
+            {
+            }
+            else
+            {
+                Attackenemy[con] = tower_controll.enemies[i];
+                con++;
+            }
+        }
+        if (con == 2)
+        {
+            GameObject bullet = Instantiate(Bullet00);
+            bullet.transform.position = CreatePos.position;
+            bullet.GetComponent<BulletState>().MyTower = gameObject;
+            bullet.GetComponent<BulletState>().Target = Attackenemy[0];
+
+            GameObject bullet2 = Instantiate(Bullet00);
+            bullet2.transform.position = CreatePos2.position;
+            bullet2.GetComponent<BulletState>().MyTower = gameObject;
+            bullet2.GetComponent<BulletState>().Target = Attackenemy[1];
+
+        }
+        else if (con == 1)
+        {
+            GameObject bullet = Instantiate(Bullet00);
+            bullet.transform.position = CreatePos.position;
+            bullet.GetComponent<BulletState>().MyTower = gameObject;
+            bullet.GetComponent<BulletState>().Target = Attackenemy[0];
+
+            GameObject bullet2 = Instantiate(Bullet00);
+            bullet2.transform.position = CreatePos2.position;
+            bullet2.GetComponent<BulletState>().MyTower = gameObject;
+            bullet2.GetComponent<BulletState>().Target = Attackenemy[0];
+
+
+        }
+    }
     public IEnumerator DamageTime(GameObject tower,GameObject enemy,float time,float damage,float AddCriP=0f,float AddCriD=0f)
     {
         yield return new WaitForSeconds(time);

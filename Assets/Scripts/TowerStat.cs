@@ -131,6 +131,11 @@ public class TowerStat : MonoBehaviour
         DamageUI = Instantiate(DamagePrefeb);
         DamageUI.transform.SetParent(parentTransform);
         startpos = gameObject.transform.GetChild(3).localPosition;
+        if (TowerIndex == 60)
+        {
+            GameObject.Find("GameInfo").GetComponent<GameInfo>().PointCheck(1);
+
+        }
 
     }
     void Update() // 매 프레임마다 실행되는 함수입니다.
@@ -138,6 +143,10 @@ public class TowerStat : MonoBehaviour
         if (Dead)
         {
             return;
+        }
+        if (gameObject.transform.GetChild(3).localPosition != startpos && gameObject.GetComponent<Tower_Controll>().towerstate!=Tower_Controll.TowerState.MOVING)
+        {
+            gameObject.transform.GetChild(3).localPosition = startpos;
         }
         DamageUI.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0f, 1f, 0f));
         DamageUI.GetComponentInChildren<TextMeshProUGUI>().text = Damagecheck.ToString("F0");
