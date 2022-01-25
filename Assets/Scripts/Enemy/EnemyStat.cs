@@ -104,6 +104,10 @@ public class EnemyStat : MonoBehaviour
             StunCurTime = 0f;
         }
         StunCoolTime += t;
+        if (StunCoolTime >= 4)
+        {
+            StunCoolTime = 4;
+        }
     }
     public void StunGo2(float Time)
     {
