@@ -96,11 +96,11 @@ public class EnemyCreate_Controll : MonoBehaviour
         if (gameInfo.Round > 1)
         {
         
-        gameInfo.GoldCheck(20);
+        gameInfo.GoldCheck(30);
             GameObject g = GameObject.Find("Gold_Text");
             Vector3 mousePositionc = new Vector3(g.transform.position.x - 50f,
     g.transform.position.y - 60f, Camera.main.WorldToScreenPoint(g.transform.position).z);
-            GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+20G", Color.yellow, Camera.main.ScreenToWorldPoint(mousePositionc), 1.5f);
+            GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+30G", Color.yellow, Camera.main.ScreenToWorldPoint(mousePositionc), 1.5f);
 
             gameInfo.PointCheck(1);
             GameObject p = GameObject.Find("Point_Text");

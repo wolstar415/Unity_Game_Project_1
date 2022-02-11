@@ -476,15 +476,16 @@ public class ClickEventControll : MonoBehaviour
 
     void Update() // 매 프레임마다 실행되는 함수입니다.
     {
-        //if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && onclick == false)
-        //{
-        //    // Check if finger is over a UI element
-        //    if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-        //    {
-        //        Application.Quit();
-        //        return;
-        //    }
-        //}
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && onclick == false)
+        {
+            //    // Check if finger is over a UI element
+            if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            {
+                return;
+            }
+        }
+
+
 
         if (Input.GetMouseButtonDown(0) )
         {
@@ -494,27 +495,27 @@ public class ClickEventControll : MonoBehaviour
                 return;
             }
 
-            if (ui.activeSelf == true && Input.mousePosition.y < 259 && Input.mousePosition.x > 600 && Input.mousePosition.x < 1297)
-            {
-
-                //Debug.Log("체크");
-                onclick = false;
-                return;
-            }
-            //Debug.Log(Input.mousePosition);
-            if (Input.mousePosition.y < 110 && Input.mousePosition.x > 1805)
-            {
-
-                //Debug.Log("체크");
-                onclick = false;
-                return;
-            }
-            //if (EventSystem.current.IsPointerOverGameObject())
+            //if (ui.activeSelf == true && Input.mousePosition.y < 259 && Input.mousePosition.x > 600 && Input.mousePosition.x < 1297)
             //{
+
             //    Debug.Log("체크");
+            //    onclick = false;
             //    return;
             //}
-            //
+            //Debug.Log(Input.mousePosition);
+            //if (Input.mousePosition.y < 110 && Input.mousePosition.x > 1805)
+            //{
+
+            //    Debug.Log("체크");
+            //    onclick = false;
+            //    return;
+            //}
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                //Debug.Log("체크");
+                return;
+            }
+
             posz = Input.mousePosition;
 
             Ray ray = Mycamera.ScreenPointToRay(Input.mousePosition);
