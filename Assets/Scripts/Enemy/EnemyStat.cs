@@ -79,7 +79,7 @@ public class EnemyStat : MonoBehaviour
     public void Start()  // 처음 시작시 실행되는 함수입니다.
     {
         enemySystem = gameObject.GetComponent<EnemySystem>();
-        parentTransform = GameObject.Find("HUDTranform").GetComponent<Transform>();
+        parentTransform = GameInfo.inst.HUDTranform;
         HpBar = Instantiate(HpBarPrefeb);
         HpBar.transform.SetParent(parentTransform);
         HpBar.GetComponent<Hpbar_System>().Hp_Bar_Setup(Hp, Hpmax,Boss);
@@ -363,51 +363,49 @@ public class EnemyStat : MonoBehaviour
                 float G_r = Random.Range(0f, 100f);
                 if (G_r <= tower.GetComponent<TowerStat>().Item_Level *20)
                 {
-                    GameObject.Find("GameInfo").GetComponent<GameInfo>().GoldCheck(1);
-                    GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+1G", Color.yellow, tower.transform.position, 1f);
+                    GameInfo.inst.GoldCheck(1);
+                    Texteffect.inst.T_Effect("+1G", Color.yellow, tower.transform.position, 1f);
 
                 }
             }
 
             Dead = true;
-            GameObject.Find("GameInfo").GetComponent<GameInfo>().con_Enemy--;
-            GameObject.Find("GameInfo").GetComponent<GameInfo>().GoldCheck(GetMoney);
+            GameInfo.inst.con_Enemy--;
+            GameInfo.inst.GoldCheck(GetMoney);
 
 
             if (f_Boss)
             {
-                GameObject.Find("GameInfo").GetComponent<GameInfo>().GameVictory();
-                //GameObject.Find("GameInfo").GetComponent<GameInfo>().PointCheck(4);
+                GameInfo.inst.GameVictory();
+
             }
             if (Boss)
             {
-                GameObject g = GameObject.Find("Gold_Text");
+                GameObject g = GameInfo.inst.GoldText;
                 Vector3 mousePositionc = new Vector3(g.transform.position.x - 50f,
         g.transform.position.y - 60f, Camera.main.WorldToScreenPoint(g.transform.position).z);
-                GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+30G", Color.yellow, Camera.main.ScreenToWorldPoint(mousePositionc), 1.5f);
+                Texteffect.inst.T_Effect("+30G", Color.yellow, Camera.main.ScreenToWorldPoint(mousePositionc), 1.5f);
 
-                GameObject p = GameObject.Find("Point_Text");
+                GameObject p = GameInfo.inst.PointText;
                 Vector3 mousePosition = new Vector3(p.transform.position.x - 50f,
         p.transform.position.y - 60f, Camera.main.WorldToScreenPoint(p.transform.position).z);
-                GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+2P", Color.cyan, Camera.main.ScreenToWorldPoint(mousePosition), 1.5f);
+                Texteffect.inst.T_Effect("+2P", Color.cyan, Camera.main.ScreenToWorldPoint(mousePosition), 1.5f);
 
-                //GameObject.Find("GameInfo").GetComponent<GameInfo>().GameVictory();
-                GameObject.Find("GameInfo").GetComponent<GameInfo>().PointCheck(2);
-                //GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+20G", Color.yellow, tower.transform.position, 1f);
-                //Vector3 asd = new Vector3(tower.transform.position.x + 50, tower.transform.position.y, tower.transform.position.z);
-                //GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+2P", Color.cyan, asd, 1f);
+
+                GameInfo.inst.PointCheck(2);
+
             }
             else
             {
-                GameObject g = GameObject.Find("Gold_Text");
+                GameObject g = GameInfo.inst.GoldText;
                 Vector3 mousePositionc = new Vector3(g.transform.position.x - 50f,
         g.transform.position.y - 60f, Camera.main.WorldToScreenPoint(g.transform.position).z);
-                GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+1G", Color.yellow, Camera.main.ScreenToWorldPoint(mousePositionc), 1.5f);
+                Texteffect.inst.T_Effect("+1G", Color.yellow, Camera.main.ScreenToWorldPoint(mousePositionc), 1.5f);
 
             }
-            // GameObject.Find("GameInfo").GetComponent<GameInfo>().Gold += GetMoney;
 
-            GameObject.Find("GameInfo").GetComponent<GameInfo>().deadCon++;
+
+            GameInfo.inst.deadCon++;
             Destroy(HpBar);
             gameObject.transform.position = new Vector3(1000f, 1000f, 1000f);
             Destroy(gameObject,2.0f);

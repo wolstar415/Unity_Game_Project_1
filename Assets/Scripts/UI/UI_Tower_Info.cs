@@ -54,7 +54,7 @@ using UnityEngine.UI;
         if (Tower == null || Tower.GetComponent<TowerStat>().Dead)
         {
             gameObject.SetActive(false);
-            GameObject.Find("ClickEventControll").GetComponent<ClickEventControll>().clickState = ClickEventControll.ClickState.None;
+            ClickEventControll.inst.clickState = ClickEventControll.ClickState.None;
             return;
         }
         //int i = Tower.GetComponent<TowerStat>().Item_InDEX;
@@ -87,7 +87,7 @@ using UnityEngine.UI;
         //item_image.sprite = item_sprite[i];
 
 
-        //item_text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String[i];
+
 
 
 

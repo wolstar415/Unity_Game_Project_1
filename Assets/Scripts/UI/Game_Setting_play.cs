@@ -14,13 +14,10 @@ public class Game_Setting_play : MonoBehaviour
         if (Setting.activeSelf==false)
         {
 
-            if (GameObject.Find("Game_Setting") != null)
 
-            {
 
                 slider.value = Game_Setting.inst.Sound;
                 toggle.isOn = Game_Setting.inst.noDamage;
-            }
 
             Setting.SetActive(true);
         }

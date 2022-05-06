@@ -38,34 +38,34 @@ public class UIButtonClick : MonoBehaviour
 
     public void LevelUpButton()
     {
-        int i = GameObject.Find("GameInfo").GetComponent<GameInfo>().Level;
+        int i = GameInfo.inst.Level;
 
-        if (GameObject.Find("GameInfo").GetComponent<GameInfo>().Gold <25 || GameObject.Find("GameInfo").GetComponent<GameInfo>().Level >= 10)
+        if (GameInfo.inst.Gold <25 || GameInfo.inst.Level >= 10)
         {
             Vector3 mousePositionc = new Vector3(MoneyIcon.transform.position.x,
        MoneyIcon.transform.position.y, Camera.main.WorldToScreenPoint(MoneyIcon.transform.position).z);
             //Vector3 mousePosition = new Vector3(Input.mousePosition.x,
             //Input.mousePosition.y+100f, Camera.main.WorldToScreenPoint(Input.mousePosition).z);
-            GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("No GOLD", Color.yellow, Camera.main.ScreenToWorldPoint(mousePositionc), 1f);
+            Texteffect.inst.T_Effect("No GOLD", Color.yellow, Camera.main.ScreenToWorldPoint(mousePositionc), 1f);
             return;
         }
-        
-        GameObject.Find("GameInfo").GetComponent<GameInfo>().GoldCheck(-25);
+
+        GameInfo.inst.GoldCheck(-25);
         
             Vector3 mousePosition = new Vector3(MoneyIcon.transform.position.x,
        MoneyIcon.transform.position.y, Camera.main.WorldToScreenPoint(MoneyIcon.transform.position).z);
         //Vector3 mousePosition = new Vector3(Input.mousePosition.x,
         //Input.mousePosition.y+100f, Camera.main.WorldToScreenPoint(Input.mousePosition).z);
-        GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("-25G", Color.yellow, Camera.main.ScreenToWorldPoint(mousePosition),2f);
+        Texteffect.inst.T_Effect("-25G", Color.yellow, Camera.main.ScreenToWorldPoint(mousePosition),2f);
 
-        GameObject.Find("GameInfo").GetComponent<GameInfo>().Level++;
+        GameInfo.inst.Level++;
         i++;
-        if (GameObject.Find("GameInfo").GetComponent<GameInfo>().Level == 10)
+        if (GameInfo.inst.Level == 10)
         {
             level_Info_Text.text = "        Lv.Max" + "\n" +
-            "Tower 1 : " + GameObject.Find("GameData").GetComponent<GameData>().Tower_Level1_Per[i] + "%\n" +
-            "Tower 2 : " + GameObject.Find("GameData").GetComponent<GameData>().Tower_Level2_Per[i] + "%\n" +
-            "Tower 3 : " + GameObject.Find("GameData").GetComponent<GameData>().Tower_Level3_Per[i] + "%";
+            "Tower 1 : " + GameData.inst.Tower_Level1_Per[i] + "%\n" +
+            "Tower 2 : " + GameData.inst.Tower_Level2_Per[i] + "%\n" +
+            "Tower 3 : " + GameData.inst.Tower_Level3_Per[i] + "%";
             MoneyIcon.SetActive(false);
             MoneyIcon2.SetActive(false);
             MoneyIcon3.GetComponent<RectTransform>().position= MoneyIcon3.GetComponent<RectTransform>().position+new Vector3(120f,0,0);
@@ -73,9 +73,9 @@ public class UIButtonClick : MonoBehaviour
         else
         {
             level_Info_Text.text = "        Lv." + i + "\n" +
-            "Tower 1 : " + GameObject.Find("GameData").GetComponent<GameData>().Tower_Level1_Per[i] + "%\n"+
-            "Tower 2 : " + GameObject.Find("GameData").GetComponent<GameData>().Tower_Level2_Per[i] + "%\n"+
-            "Tower 3 : " + GameObject.Find("GameData").GetComponent<GameData>().Tower_Level3_Per[i] + "%";
+            "Tower 1 : " + GameData.inst.Tower_Level1_Per[i] + "%\n"+
+            "Tower 2 : " + GameData.inst.Tower_Level2_Per[i] + "%\n"+
+            "Tower 3 : " + GameData.inst.Tower_Level3_Per[i] + "%";
         }
 
 
@@ -178,7 +178,7 @@ public class UIButtonClick : MonoBehaviour
 
     public void MeSkill_Button()
     {
-        int i = GameObject.Find("Tower_GameInfo").GetComponent<UI_Tower_Info>().Tower.GetComponent<TowerStat>().TowerIndex;
+        int i = UI_Tower_Info.inst.Tower.GetComponent<TowerStat>().TowerIndex;
         add_Info_Text.text = GameData.inst.Tower_Info_String[i];
         Addtext.GetComponent<Addtext>().CulTime = 0f;
         Addtext.SetActive(true);
@@ -188,28 +188,28 @@ public class UIButtonClick : MonoBehaviour
     public void RanSkill_Button()
     {
         checki = 2;
-        int i = GameObject.Find("Tower_GameInfo").GetComponent<UI_Tower_Info>().Tower.GetComponent<TowerStat>().Item_InDEX;
-        int l = GameObject.Find("Tower_GameInfo").GetComponent<UI_Tower_Info>().Tower.GetComponent<TowerStat>().Item_Level;
+        int i = UI_Tower_Info.inst.Tower.GetComponent<TowerStat>().Item_InDEX;
+        int l = UI_Tower_Info.inst.Tower.GetComponent<TowerStat>().Item_Level;
         if (l ==1)
         {
 
-            add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String1[i];
+            add_Info_Text.text = GameData.inst.ITEM_Info_String1[i];
         }
         else if (l == 2)
         {
-            add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String2[i];
+            add_Info_Text.text = GameData.inst.ITEM_Info_String2[i];
         }
         else if (l == 3)
         {
-            add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String3[i];
+            add_Info_Text.text = GameData.inst.ITEM_Info_String3[i];
         }
         else if (l == 4)
         {
-            add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String4[i];
+            add_Info_Text.text = GameData.inst.ITEM_Info_String4[i];
         }
         else if (l == 5)
         {
-            add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String5[i];
+            add_Info_Text.text = GameData.inst.ITEM_Info_String5[i];
         }
         Addtext.GetComponent<Addtext>().CulTime = 0f;
         Addtext.SetActive(true);
@@ -217,7 +217,7 @@ public class UIButtonClick : MonoBehaviour
     public void QSkill_Button()
     {
         checki = 3;
-        int i = GameObject.Find("Tower_GameInfo").GetComponent<UI_Tower_Info>().Tower.GetComponent<TowerStat>().quality;
+        int i = UI_Tower_Info.inst.Tower.GetComponent<TowerStat>().quality;
         add_Info_Text.text = "Plus Damage : " + (i * 10).ToString() + "%";
         Addtext.GetComponent<Addtext>().CulTime = 0f;
         Addtext.SetActive(true);
@@ -225,7 +225,7 @@ public class UIButtonClick : MonoBehaviour
     public void towerstat_Button()
     {
         checki = 4;
-        GameObject g = GameObject.Find("Tower_GameInfo").GetComponent<UI_Tower_Info>().Tower;
+        GameObject g = UI_Tower_Info.inst.Tower;
         add_Info_Text.text = "Cri : " + g.GetComponent<TowerStat>().DoubleAtPerF().ToString() + "%\n"+
             "Cri D : " + (g.GetComponent<TowerStat>().DoubleAtF()*1f).ToString() + "%"
             ;
@@ -239,7 +239,7 @@ public class UIButtonClick : MonoBehaviour
 
 
 
-        GameObject g = GameObject.Find("Tower_GameInfo").GetComponent<UI_Tower_Info>().Tower;
+        GameObject g = UI_Tower_Info.inst.Tower;
 
         int i = g.GetComponent<TowerStat>().quality;
         int i2 = g.GetComponent<TowerStat>().Item_InDEX;
@@ -254,30 +254,30 @@ public class UIButtonClick : MonoBehaviour
         {
             //Debug.Log(GameObject.Find("GameData").GetComponent<GameData>().Tower_Info_String[i3]);
 
-            add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().Tower_Info_String[i3];
+            add_Info_Text.text = GameData.inst.Tower_Info_String[i3];
         }
         if (checki == 2)
         {
             if (l2 == 1)
             {
 
-                add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String1[i2];
+                add_Info_Text.text = GameData.inst.ITEM_Info_String1[i2];
             }
             else if (l2 == 2)
             {
-                add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String2[i2];
+                add_Info_Text.text = GameData.inst.ITEM_Info_String2[i2];
             }
             else if (l2 == 3)
             {
-                add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String3[i2];
+                add_Info_Text.text = GameData.inst.ITEM_Info_String3[i2];
             }
             else if (l2 == 4)
             {
-                add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String4[i2];
+                add_Info_Text.text = GameData.inst.ITEM_Info_String4[i2];
             }
             else if (l2 == 5)
             {
-                add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String5[i2];
+                add_Info_Text.text = GameData.inst.ITEM_Info_String5[i2];
             }
         }
         if (checki == 3)
@@ -294,19 +294,19 @@ public class UIButtonClick : MonoBehaviour
     }
     public void Ch_Button()
     {
-        if (GameObject.Find("GameInfo").GetComponent<GameInfo>().Point <= 0 )
+        if (GameInfo.inst.Point <= 0 )
         {
             return;
         }
 
 
 
-        GameObject.Find("GameInfo").GetComponent<GameInfo>().PointCheck(-1);
+        GameInfo.inst.PointCheck(-1);
         Vector3 mousePosition = new Vector3(Input.mousePosition.x,
             Input.mousePosition.y + 0f, Camera.main.WorldToScreenPoint(Input.mousePosition).z);
-        GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("-1P", Color.cyan, Camera.main.ScreenToWorldPoint(mousePosition), 2f);
-        GameObject g = GameObject.Find("Tower_GameInfo").GetComponent<UI_Tower_Info>().Tower;
-        GameObject z = GameObject.Find("ClickEventControll").GetComponent<ClickEventControll>().Chantower(g);
+        Texteffect.inst.T_Effect("-1P", Color.cyan, Camera.main.ScreenToWorldPoint(mousePosition), 2f);
+        GameObject g = UI_Tower_Info.inst.Tower;
+        GameObject z = ClickEventControll.inst.Chantower(g);
 
 
         int i2 = z.GetComponent<TowerStat>().Item_InDEX;
@@ -323,30 +323,30 @@ public class UIButtonClick : MonoBehaviour
         {
             //Debug.Log(GameObject.Find("GameData").GetComponent<GameData>().Tower_Info_String[i3]);
 
-            add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().Tower_Info_String[i3];
+            add_Info_Text.text = GameData.inst.Tower_Info_String[i3];
         }
         if (checki == 2)
         {
             if (l2 == 1)
             {
 
-                add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String1[i2];
+                add_Info_Text.text = GameData.inst.ITEM_Info_String1[i2];
             }
             else if (l2 == 2)
             {
-                add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String2[i2];
+                add_Info_Text.text = GameData.inst.ITEM_Info_String2[i2];
             }
             else if (l2 == 3)
             {
-                add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String3[i2];
+                add_Info_Text.text = GameData.inst.ITEM_Info_String3[i2];
             }
             else if (l2 == 4)
             {
-                add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String4[i2];
+                add_Info_Text.text = GameData.inst.ITEM_Info_String4[i2];
             }
             else if (l2 == 5)
             {
-                add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String5[i2];
+                add_Info_Text.text = GameData.inst.ITEM_Info_String5[i2];
             }
         }
         if (checki == 3)
@@ -369,21 +369,21 @@ public class UIButtonClick : MonoBehaviour
     }
     public void Up_Button()
     {
-        if (GameObject.Find("GameInfo").GetComponent<GameInfo>().Point < levelupcost[GameObject.Find("Tower_GameInfo").GetComponent<UI_Tower_Info>().Tower.GetComponent<TowerStat>().Level])
+        if (GameInfo.inst.Point < levelupcost[UI_Tower_Info.inst.Tower.GetComponent<TowerStat>().Level])
         {
             return;
         }
 
 
 
-        GameObject.Find("GameInfo").GetComponent<GameInfo>().PointCheck(-levelupcost[GameObject.Find("Tower_GameInfo").GetComponent<UI_Tower_Info>().Tower.GetComponent<TowerStat>().Level]);
+        GameInfo.inst.PointCheck(-levelupcost[UI_Tower_Info.inst.Tower.GetComponent<TowerStat>().Level]);
         Vector3 mousePosition = new Vector3(Input.mousePosition.x,
             Input.mousePosition.y + 0f, Camera.main.WorldToScreenPoint(Input.mousePosition).z);
-        GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect(-levelupcost[GameObject.Find("Tower_GameInfo").GetComponent<UI_Tower_Info>().Tower.GetComponent<TowerStat>().Level]+"P", Color.cyan, Camera.main.ScreenToWorldPoint(mousePosition), 2f);
-        GameObject g = GameObject.Find("Tower_GameInfo").GetComponent<UI_Tower_Info>().Tower;
+        Texteffect.inst.T_Effect(-levelupcost[UI_Tower_Info.inst.Tower.GetComponent<TowerStat>().Level]+"P", Color.cyan, Camera.main.ScreenToWorldPoint(mousePosition), 2f);
+        GameObject g = UI_Tower_Info.inst.Tower;
 
 
-        GameObject z= GameObject.Find("ClickEventControll").GetComponent<ClickEventControll>().UpTower2(g);
+        GameObject z= ClickEventControll.inst.UpTower2(g);
 
 
         int i2 = z.GetComponent<TowerStat>().Item_InDEX;
@@ -398,32 +398,32 @@ public class UIButtonClick : MonoBehaviour
         Addtext.GetComponent<Addtext>().CulTime = 0f;
         if (checki == 1)
         {
-            //Debug.Log(GameObject.Find("GameData").GetComponent<GameData>().Tower_Info_String[i3]);
 
-            add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().Tower_Info_String[i3];
+
+            add_Info_Text.text = GameData.inst.Tower_Info_String[i3];
         }
         if (checki == 2)
         {
             if (l2 == 1)
             {
 
-                add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String1[i2];
+                add_Info_Text.text = GameData.inst.ITEM_Info_String1[i2];
             }
             else if (l2 == 2)
             {
-                add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String2[i2];
+                add_Info_Text.text = GameData.inst.ITEM_Info_String2[i2];
             }
             else if (l2 == 3)
             {
-                add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String3[i2];
+                add_Info_Text.text = GameData.inst.ITEM_Info_String3[i2];
             }
             else if (l2 == 4)
             {
-                add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String4[i2];
+                add_Info_Text.text = GameData.inst.ITEM_Info_String4[i2];
             }
             else if (l2 == 5)
             {
-                add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String5[i2];
+                add_Info_Text.text = GameData.inst.ITEM_Info_String5[i2];
             }
         }
         if (checki == 3)
@@ -446,7 +446,7 @@ public class UIButtonClick : MonoBehaviour
     }
     public void Canbtn()
     {
-        GameObject.Find("ClickEventControll").GetComponent<ClickEventControll>().CancleTower();
+        ClickEventControll.inst.CancleTower();
     }
 
 }
