@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class ClickEventControll : MonoBehaviour
 {
     public static ClickEventControll inst;
-    void awak()
+    private void Awake()
     {
         inst = this;
     }
@@ -61,10 +61,7 @@ public class ClickEventControll : MonoBehaviour
 
     void Start()  // 처음 시작시 실행되는 함수입니다.
     {
-        uiClick_Evenet = GetComponent<UIClick_Evenet>();
-        gamedata = GameObject.Find("GameData").GetComponent<GameData>();
-        //BuildingClickButton = GameObject.Find("BuildingClickButtonPanel");
-        //BuildingClickButton.SetActive(false);
+
         
 
     }
@@ -80,38 +77,38 @@ public class ClickEventControll : MonoBehaviour
         if (level == 1)
         {
 
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_1.Count);
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_1[ran_tower]);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_1.Count);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_1[ran_tower]);
         }
         else if (level == 2)
         {
 
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_2.Count);
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_2[ran_tower]);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_2.Count);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_2[ran_tower]);
         }
         else if (level == 3)
         {
 
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_3.Count);
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_3[ran_tower]);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_3.Count);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_3[ran_tower]);
         }
         else if (level == 4)
         {
 
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_4.Count);
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_4[ran_tower]);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_4.Count);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_4[ran_tower]);
         }
         else if (level == 5)
         {
 
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_5.Count);
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_5[ran_tower]);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_5.Count);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_5[ran_tower]);
         }
         else if (level == 6)
         {
 
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_6.Count);
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_6[ran_tower]);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_6.Count);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_6[ran_tower]);
         }
         else if (level == 7)
         {

@@ -7,6 +7,11 @@ using UnityEngine.UI;
 
     public class UI_Tower_Info : MonoBehaviour
 {
+    public static UI_Tower_Info inst;
+    private void Awake()
+    {
+        inst = this;
+    }
     public GameObject Tower;
         public TextMeshProUGUI tower_ad_text;
         //public Text tower_range_text;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tower_Class : MonoBehaviour
 {
     public static Tower_Class inst;
-    void awak()
+    private void Awake()
     {
         inst = this;
     }

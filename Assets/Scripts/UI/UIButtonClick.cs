@@ -128,10 +128,10 @@ public class UIButtonClick : MonoBehaviour
 
     public void RoundInfo()
     {
-        int round = GameObject.Find("GameInfo").GetComponent<GameInfo>().Round;
-        float hp = GameObject.Find("GameData").GetComponent<GameData>().Enemy_Hp[round];
-        float defense= GameObject.Find("GameData").GetComponent<GameData>().Enemy_De[round];
-        float speed= GameObject.Find("GameData").GetComponent<GameData>().Enemy_Sp[round];
+        int round = GameInfo.inst.Round;
+        float hp = GameData.inst.Enemy_Hp[round];
+        float defense= GameData.inst.Enemy_De[round];
+        float speed= GameData.inst.Enemy_Sp[round];
         Time.timeScale = 0f;
         Roundtext.text = round + " Round";
         hptext.text = hp.ToString("F0");
@@ -170,8 +170,8 @@ public class UIButtonClick : MonoBehaviour
     {
         
         SceneManager.LoadScene("02_MainMenu");
-        GameObject.Find("Game_Setting").GetComponent<AudioSource>().clip = Game_Setting.inst.sound[0];
-        GameObject.Find("Game_Setting").GetComponent<AudioSource>().Play();
+        Game_Setting.inst.audiosource.clip = Game_Setting.inst.sound[0];
+        Game_Setting.inst.audiosource.Play();
         Time.timeScale = 1f;
 
     }
@@ -179,7 +179,7 @@ public class UIButtonClick : MonoBehaviour
     public void MeSkill_Button()
     {
         int i = GameObject.Find("Tower_GameInfo").GetComponent<UI_Tower_Info>().Tower.GetComponent<TowerStat>().TowerIndex;
-        add_Info_Text.text = GameObject.Find("GameData").GetComponent<GameData>().Tower_Info_String[i];
+        add_Info_Text.text = GameData.inst.Tower_Info_String[i];
         Addtext.GetComponent<Addtext>().CulTime = 0f;
         Addtext.SetActive(true);
         //Addtext.GetComponent<Addtext>().CoolTime = 3f;

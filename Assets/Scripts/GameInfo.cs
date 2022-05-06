@@ -65,7 +65,13 @@ public class GameInfo : MonoBehaviour
             GameObject.Find("ClickEventControll").GetComponent<ClickEventControll>().Tower_Destory(damagetext[i]);
         }
 
-        GameObject[] damagetext2 = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] damagetext2 = GameObject.
+            
+            
+            
+            
+            
+            GameObjectsWithTag("Enemy");
 
         for (int i = 0; i < damagetext2.Length; i++)
         {
