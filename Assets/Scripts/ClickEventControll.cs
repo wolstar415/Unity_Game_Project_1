@@ -5,6 +5,11 @@ using UnityEngine.EventSystems;
 
 public class ClickEventControll : MonoBehaviour
 {
+    public static ClickEventControll inst;
+    void awak()
+    {
+        inst = this;
+    }
     public GameObject ui;
 
     public bool onclick;

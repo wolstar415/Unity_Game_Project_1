@@ -326,7 +326,7 @@ public class EnemyStat : MonoBehaviour
         try
         {
 
-            if (GameObject.Find("Game_Setting").GetComponent<Game_Setting>().noDamage == true)
+            if (Game_Setting.inst.noDamage == true)
             {
 
                 D = F_damage.ToString("F0");

@@ -99,11 +99,9 @@ public class UIButtonClick : MonoBehaviour
     public void SettingStart()
     {
         Time.timeScale = 0f;
-        slider.value = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().Sound;
-        slider2.value = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().Music;
-
-        //toggle.isOn = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().noDamage;
-        if (GameObject.Find("Game_Setting").GetComponent<Game_Setting>().noDamage)
+        slider.value = Game_Setting.inst.Sound;
+        slider2.value = Game_Setting.inst.Music;
+        if (Game_Setting.inst.noDamage)
         {
             damageON.SetActive(true);
             damageOFF.SetActive(false);
@@ -118,13 +116,13 @@ public class UIButtonClick : MonoBehaviour
 
     public void soundcheck()
     {
-        GameObject.Find("Game_Setting").GetComponent<Game_Setting>().Sound = slider.value;
+        Game_Setting.inst.Sound = slider.value;
         //Debug.Log(slider.value);
     }
     public void musiccheck()
     {
-        GameObject.Find("Game_Setting").GetComponent<Game_Setting>().Music = slider2.value;
-        GameObject.Find("Game_Setting").GetComponent<AudioSource>().volume = slider2.value;
+        Game_Setting.inst.Music = slider2.value;
+        Game_Setting.inst.audiosource.volume = slider2.value;
         //Debug.Log(slider.value);
     }
 
@@ -148,7 +146,7 @@ public class UIButtonClick : MonoBehaviour
 
         damageON.SetActive(false);
         damageOFF.SetActive(true);
-        GameObject.Find("Game_Setting").GetComponent<Game_Setting>().noDamage = false;
+        Game_Setting.inst.noDamage = false;
 
 
     }
@@ -157,7 +155,7 @@ public class UIButtonClick : MonoBehaviour
 
         damageON.SetActive(true);
         damageOFF.SetActive(false);
-        GameObject.Find("Game_Setting").GetComponent<Game_Setting>().noDamage = true;
+        Game_Setting.inst.noDamage = true;
 
     }
 
@@ -172,7 +170,7 @@ public class UIButtonClick : MonoBehaviour
     {
         
         SceneManager.LoadScene("02_MainMenu");
-        GameObject.Find("Game_Setting").GetComponent<AudioSource>().clip = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().sound[0];
+        GameObject.Find("Game_Setting").GetComponent<AudioSource>().clip = Game_Setting.inst.sound[0];
         GameObject.Find("Game_Setting").GetComponent<AudioSource>().Play();
         Time.timeScale = 1f;
 

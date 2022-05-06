@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class GameInfo : MonoBehaviour
 {
+    public static GameInfo inst;
+    private void Awake()
+    {
+        inst = this;
+    }
     public int Round=0;
     public int Gold = 0;
     public int Point = 0;
@@ -86,10 +91,10 @@ public class GameInfo : MonoBehaviour
 
         try
         {
-        int i = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().di;
+        int i = Game_Setting.inst.di;
         difficulty = (Difficulty)i;
         difficulty_AddHp= difficulty_AddHp*(0.9f+(0.1f*i));
-            GameObject.Find("Game_Setting").GetComponent<AudioSource>().clip = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().sound[1];
+            GameObject.Find("Game_Setting").GetComponent<AudioSource>().clip = Game_Setting.inst.sound[1];
             GameObject.Find("Game_Setting").GetComponent<AudioSource>().Play();
 
             if ( i >= 4)

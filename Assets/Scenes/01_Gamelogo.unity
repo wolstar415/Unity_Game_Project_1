@@ -1094,6 +1094,7 @@ MonoBehaviour:
   sound:
   - {fileID: 8300000, guid: b3bba9eee1e7f064c96158e9aba82744, type: 3}
   - {fileID: 8300000, guid: d5c22c0e8cf9ce14c87bd85e3c3b1701, type: 3}
+  audiosource: {fileID: 1972509385}
 --- !u!4 &1972509384
 Transform:
   m_ObjectHideFlags: 0
