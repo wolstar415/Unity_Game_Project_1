@@ -30,10 +30,9 @@ public class Menu_Click_Event : MonoBehaviour
 
     public void Button_Setting()
     {
-        slider.value = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().Sound;
-        slider2.value = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().Music;
-        //toggle.isOn = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().noDamage;
-        if (GameObject.Find("Game_Setting").GetComponent<Game_Setting>().noDamage)
+        slider.value = Game_Setting.inst.Sound;
+        slider2.value = Game_Setting.inst.Music;
+        if (Game_Setting.inst.noDamage)
         {
             damageON.SetActive(true);
             damageOFF.SetActive(false);
@@ -51,13 +50,13 @@ public class Menu_Click_Event : MonoBehaviour
     }
     public void soundcheck()
     {
-        GameObject.Find("Game_Setting").GetComponent<Game_Setting>().Sound = slider.value;
+        Game_Setting.inst.Sound = slider.value;
         //Debug.Log(slider.value);
     }
     public void musiccheck()
     {
-        GameObject.Find("Game_Setting").GetComponent<Game_Setting>().Music = slider2.value;
-        GameObject.Find("Game_Setting").GetComponent<AudioSource>().volume = slider2.value;
+        Game_Setting.inst.Music = slider2.value;
+        Game_Setting.inst.audiosource.volume = slider2.value;
         //Debug.Log(slider.value);
     }
 
@@ -66,7 +65,7 @@ public class Menu_Click_Event : MonoBehaviour
 
             damageON.SetActive(false);
             damageOFF.SetActive(true);
-            GameObject.Find("Game_Setting").GetComponent<Game_Setting>().noDamage = false;
+        Game_Setting.inst.noDamage = false;
 
 
     }
@@ -75,56 +74,44 @@ public class Menu_Click_Event : MonoBehaviour
 
             damageON.SetActive(true);
             damageOFF.SetActive(false);
-            GameObject.Find("Game_Setting").GetComponent<Game_Setting>().noDamage = true;
+        Game_Setting.inst.noDamage = true;
 
     }
     
     public void Clickdi1()
     {
-        
-        GameObject.Find("Game_Setting").GetComponent<Game_Setting>().di = 1;
-        //GameObject.Find("Game_Setting").GetComponent<AudioClip>().cl= GameObject.Find("Game_Setting").GetComponent<Game_Setting>().sound[1];
-      //  GameObject.Find("Game_Setting").GetComponent<AudioSource>().clip= GameObject.Find("Game_Setting").GetComponent<Game_Setting>().sound[1];
+
+        Game_Setting.inst.di = 1;
         nan.SetActive(false);
         Map.SetActive(true);
     }
     public void Clickdi2()
     {
-       // GameObject.Find("Game_Setting").GetComponent<AudioSource>().Stop();
-        GameObject.Find("Game_Setting").GetComponent<Game_Setting>().di = 2;
-       // GameObject.Find("Game_Setting").GetComponent<AudioSource>().clip = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().sound[1];
+        Game_Setting.inst.di = 2;
         nan.SetActive(false);
         Map.SetActive(true);
     }
     public void Clickdi3()
     {
-        //GameObject.Find("Game_Setting").GetComponent<AudioSource>().Stop();
-        GameObject.Find("Game_Setting").GetComponent<Game_Setting>().di = 3;
-       // GameObject.Find("Game_Setting").GetComponent<AudioSource>().clip = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().sound[1];
+        Game_Setting.inst.di = 3;
         nan.SetActive(false);
         Map.SetActive(true);
     }
     public void Clickdi4()
     {
-        //GameObject.Find("Game_Setting").GetComponent<AudioSource>().Stop();
-        GameObject.Find("Game_Setting").GetComponent<Game_Setting>().di = 4;
-      //  GameObject.Find("Game_Setting").GetComponent<AudioSource>().clip = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().sound[1];
+        Game_Setting.inst.di = 4;
         nan.SetActive(false);
         Map.SetActive(true);
     }
     public void Clickdi5()
     {
-       // GameObject.Find("Game_Setting").GetComponent<AudioSource>().Stop();
-        GameObject.Find("Game_Setting").GetComponent<Game_Setting>().di = 5;
-       // GameObject.Find("Game_Setting").GetComponent<AudioSource>().clip = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().sound[1];
+        Game_Setting.inst.di = 5;
         nan.SetActive(false);
         Map.SetActive(true);
     }
     public void Clickdi6()
     {
-        //GameObject.Find("Game_Setting").GetComponent<AudioSource>().Stop();
-        GameObject.Find("Game_Setting").GetComponent<Game_Setting>().di = 6;
-       // GameObject.Find("Game_Setting").GetComponent<AudioSource>().clip = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().sound[1];
+        Game_Setting.inst.di = 6;
         nan.SetActive(false);
         Map.SetActive(true);
     }

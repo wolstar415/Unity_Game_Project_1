@@ -550,6 +550,7 @@ MonoBehaviour:
   DefenceInit: 0
   Dead: 0
   Boss: 0
+  f_Boss: 0
   enemySystem: {fileID: 0}
   parentTransform: {fileID: 0}
   TextUi: {fileID: 905756001578832793, guid: a21b013da5cf37f46a5587f7a20c347b, type: 3}

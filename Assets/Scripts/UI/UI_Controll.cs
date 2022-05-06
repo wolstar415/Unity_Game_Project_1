@@ -14,7 +14,7 @@ public class UI_Controll : MonoBehaviour
    
     void Start()  // 처음 시작시 실행되는 함수입니다.
     {
-        gameinfo = GameObject.Find("GameInfo").GetComponent<GameInfo>();
+        gameinfo = GameInfo.inst;
     }
 
     

@@ -7,6 +7,11 @@ using UnityEngine.UI;
 
     public class UI_Tower_Info : MonoBehaviour
 {
+    public static UI_Tower_Info inst;
+    private void Awake()
+    {
+        inst = this;
+    }
     public GameObject Tower;
         public TextMeshProUGUI tower_ad_text;
         //public Text tower_range_text;
@@ -49,7 +54,7 @@ using UnityEngine.UI;
         if (Tower == null || Tower.GetComponent<TowerStat>().Dead)
         {
             gameObject.SetActive(false);
-            GameObject.Find("ClickEventControll").GetComponent<ClickEventControll>().clickState = ClickEventControll.ClickState.None;
+            ClickEventControll.inst.clickState = ClickEventControll.ClickState.None;
             return;
         }
         //int i = Tower.GetComponent<TowerStat>().Item_InDEX;
@@ -82,7 +87,7 @@ using UnityEngine.UI;
         //item_image.sprite = item_sprite[i];
 
 
-        //item_text.text = GameObject.Find("GameData").GetComponent<GameData>().ITEM_Info_String[i];
+
 
 
 

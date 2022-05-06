@@ -43,7 +43,7 @@ public class help_Move_Controll : MonoBehaviour
         }
         if (movenum >= 11)
         {
-            GameObject.Find("EnemyCreate").GetComponent<EnemyCreate_Controll>().RoundStart();
+            EnemyCreate_Controll.inst.RoundStart();
             Destroy(gameObject);
 
         }

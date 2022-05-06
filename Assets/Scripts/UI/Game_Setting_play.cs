@@ -14,25 +14,22 @@ public class Game_Setting_play : MonoBehaviour
         if (Setting.activeSelf==false)
         {
 
-            if (GameObject.Find("Game_Setting") != null)
 
-            {
 
-                slider.value = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().Sound;
-                toggle.isOn = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().noDamage;
-            }
+                slider.value = Game_Setting.inst.Sound;
+                toggle.isOn = Game_Setting.inst.noDamage;
 
             Setting.SetActive(true);
         }
     }
     public void soundcheck()
     {
-        GameObject.Find("Game_Setting").GetComponent<Game_Setting>().Sound = slider.value;
+        Game_Setting.inst.Sound = slider.value;
         //Debug.Log(slider.value);
     }
     public void DagemeCheck()
     {
-        GameObject.Find("Game_Setting").GetComponent<Game_Setting>().noDamage = toggle.isOn;
+        Game_Setting.inst.noDamage = toggle.isOn;
     }
     public void Game_Reset()
     {

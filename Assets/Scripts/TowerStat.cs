@@ -113,27 +113,27 @@ public class TowerStat : MonoBehaviour
 
     void Awake()  // 처음 시작시 실행되는 함수입니다.
     {
-        gamedata= GameObject.Find("GameData").GetComponent<GameData>();
+        gamedata= GameData.inst;
         Damage= gamedata.Tower_Ad[TowerIndex];
         AtSpeed = gamedata.Tower_As[TowerIndex];
         DoubleAt = gamedata.Tower_Cri_D[TowerIndex];
         DoubleAtPer = gamedata.Tower_Cri_P[TowerIndex];
         Rang = gamedata.Tower_Rang[TowerIndex];
         gameObject.transform.GetChild(1).localScale = gameObject.transform.GetChild(1).localScale + new Vector3(Rang, 0, Rang);
-        itemmax = GameObject.Find("GameInfo").GetComponent<GameInfo>().ItemConMax;
+        itemmax = GameInfo.inst.ItemConMax;
         Item_Check = new bool[itemmax];
         for (int i = 0; i < Item_Check.Length; i++) { Item_Check[i] = false; }
     }
 
     private void Start()
     {
-        parentTransform = GameObject.Find("DamageTranform").GetComponent<Transform>();
+        parentTransform = GameInfo.inst.Damageparent;
         DamageUI = Instantiate(DamagePrefeb);
         DamageUI.transform.SetParent(parentTransform);
         startpos = gameObject.transform.GetChild(3).localPosition;
         if (TowerIndex == 60)
         {
-            GameObject.Find("GameInfo").GetComponent<GameInfo>().PointCheck(1);
+            GameInfo.inst.PointCheck(1);
 
         }
 
@@ -240,7 +240,7 @@ public void item_skill()
         {
             if (gameObject.GetComponent<Tower_Controll>().targetObject != null)
             {
-                GameObject bullet = Instantiate(GameObject.Find("ITEM_SYSTEM").GetComponent<Item_System>().item_bullet[0]);
+                GameObject bullet = Instantiate(Item_System.inst.item_bullet[0]);
                 bullet.transform.position = transform.position;
                 bullet.GetComponent<BulletState>().MyTower = gameObject;
                 bullet.GetComponent<BulletState>().Target = GetComponent<Tower_Controll>().targetObject;
@@ -254,7 +254,7 @@ public void item_skill()
         {
             if (gameObject.GetComponent<Tower_Controll>().targetObject != null)
             {
-                GameObject bullet = Instantiate(GameObject.Find("ITEM_SYSTEM").GetComponent<Item_System>().item_bullet[1]);
+                GameObject bullet = Instantiate(Item_System.inst.item_bullet[1]);
                 bullet.transform.position = transform.position;
                 bullet.GetComponent<BulletState>().MyTower = gameObject;
                 bullet.GetComponent<BulletState>().Target = GetComponent<Tower_Controll>().targetObject;
@@ -269,7 +269,7 @@ public void item_skill()
             if (gameObject.GetComponent<Tower_Controll>().targetObject != null)
             {
                 float Damae = DamageF() * (0.25f + (0.1f * Item_Level));
-                GameObject bullet = Instantiate(GameObject.Find("ITEM_SYSTEM").GetComponent<Item_System>().item_bullet[2]);
+                GameObject bullet = Instantiate(Item_System.inst.item_bullet[2]);
                 bullet.transform.position = gameObject.GetComponent<Tower_Controll>().targetObject.transform.position+new Vector3(0f,0.3f,0f);
                 bullet.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                 Destroy(bullet, 0.5f);

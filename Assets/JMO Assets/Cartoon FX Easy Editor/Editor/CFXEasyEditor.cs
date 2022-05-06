@@ -673,7 +673,7 @@ public class CFXEasyEditor : EditorWindow
 			DrawSelectableModules(ref selectedModulesMutate, ref enabledModulesMutate, selectedParticleSystem);
 
 			EditorGUI.BeginChangeCheck();
-			float newValue = EditorGUILayout.Slider("± percent", Mathf.Floor(mutatePercentage * 100), 0, 100);
+			float newValue = EditorGUILayout.Slider("?percent", Mathf.Floor(mutatePercentage * 100), 0, 100);
 			if (EditorGUI.EndChangeCheck())
 			{
 				mutatePercentage = newValue / 100f;

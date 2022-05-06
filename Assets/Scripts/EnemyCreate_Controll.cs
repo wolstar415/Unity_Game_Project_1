@@ -5,16 +5,20 @@ using UnityEngine.UI;
 
 public class EnemyCreate_Controll : MonoBehaviour
 {
+    public static EnemyCreate_Controll inst;
     public List<GameObject> EnemyObject;
     public List<GameObject> BossEnemyObject;
 
-
+    private void Awake()
+    {
+        inst = this;
+    }
     public List<GameObject> EnemyObjectRan;
     public List<GameObject> EnemyObjectRan2;
 
     public float coolTime = 1f;
     public float curTime = 0f;
-    GameInfo gameInfo;
+    public GameInfo gameInfo;
     public int EnemyNameCnt = 0;
 
     public float Enemy_Hp;
@@ -27,8 +31,7 @@ public class EnemyCreate_Controll : MonoBehaviour
 
     void Start()  // 처음 시작시 실행되는 함수입니다.
     {
-        gameData=GameObject.Find("GameData").GetComponent<GameData>();
-        gameInfo = GameObject.Find("GameInfo").GetComponent<GameInfo>();
+
 
         //StartCoroutine(StartRound(1f, 20));
         //StartCoroutine(StartRound(1f, 1));
@@ -53,7 +56,7 @@ public class EnemyCreate_Controll : MonoBehaviour
         {
             float add = tower.GetComponent<TowerStat>().Damage * (I_level * 0.01f);
             tower.GetComponent<TowerStat>().Item_AD += add;
-            GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect( add.ToString("F0")+ "AD+", Color.red, tower.transform.position, 1.5f);
+            Texteffect.inst.T_Effect( add.ToString("F0")+ "AD+", Color.red, tower.transform.position, 1.5f);
 
         }
         else if (I_index == 11)
@@ -61,7 +64,7 @@ public class EnemyCreate_Controll : MonoBehaviour
             if (gameInfo.Round % I_level == 0)
             {
                 gameInfo.GoldCheck(1);
-                GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+1G", Color.yellow, tower.transform.position, 1.5f);
+                Texteffect.inst.T_Effect("+1G", Color.yellow, tower.transform.position, 1.5f);
 
             }
 
@@ -70,7 +73,7 @@ public class EnemyCreate_Controll : MonoBehaviour
         else if (I_index == 20)
         {
             tower.GetComponent<TowerStat>().nextCri = I_level;
-            GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("CriC+" + I_level, Color.yellow, tower.transform.position, 1f);
+            Texteffect.inst.T_Effect("CriC+" + I_level, Color.yellow, tower.transform.position, 1f);
 
         }
 
@@ -79,34 +82,30 @@ public class EnemyCreate_Controll : MonoBehaviour
     public void RoundStart()
     {
         gameInfo.deadCon = 0;
-        if (GameObject.Find("GameInfo").GetComponent<GameInfo>().Gameover)
+        if (GameInfo.inst.Gameover)
         {
             return;
         }
         EnemyNameCnt = 0;
 
-        //gameInfo.Round++;
-        // gameInfo.RoundSet(Round + 1);
+
         gameInfo.RoundSet(gameInfo.Round+1);
-//        GameObject zz = GameObject.Find("RoundText");
-//        Vector3 mousePositioncc = new Vector3(zz.transform.position.x - 50f,
-//zz.transform.position.y - 60f, Camera.main.WorldToScreenPoint(zz.transform.position).z);
-//        GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("Next Round", Color.white, Camera.main.ScreenToWorldPoint(mousePositioncc), 1.5f);
+
 
         if (gameInfo.Round > 1)
         {
         
         gameInfo.GoldCheck(30);
-            GameObject g = GameObject.Find("Gold_Text");
+            GameObject g = GameInfo.inst.GoldText; 
             Vector3 mousePositionc = new Vector3(g.transform.position.x - 50f,
     g.transform.position.y - 60f, Camera.main.WorldToScreenPoint(g.transform.position).z);
-            GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+30G", Color.yellow, Camera.main.ScreenToWorldPoint(mousePositionc), 1.5f);
+            Texteffect.inst.T_Effect("+30G", Color.yellow, Camera.main.ScreenToWorldPoint(mousePositionc), 1.5f);
 
             gameInfo.PointCheck(1);
-            GameObject p = GameObject.Find("Point_Text");
+            GameObject p = GameInfo.inst.PointText;
             Vector3 mousePosition = new Vector3(p.transform.position.x - 50f,
     p.transform.position.y - 60f, Camera.main.WorldToScreenPoint(p.transform.position).z);
-            GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("+1P", Color.cyan, Camera.main.ScreenToWorldPoint(mousePosition), 1.5f);
+            Texteffect.inst.T_Effect("+1P", Color.cyan, Camera.main.ScreenToWorldPoint(mousePosition), 1.5f);
 
 
 
@@ -202,7 +201,7 @@ public class EnemyCreate_Controll : MonoBehaviour
         int i = Random.Range(0, EnemyObjectRan2.Count-1);
         yield return new WaitForSeconds(0f);
 
-        if (GameObject.Find("GameInfo").GetComponent<GameInfo>().Gameover)
+        if (GameInfo.inst.Gameover)
         {
             yield break;
         }
@@ -241,7 +240,7 @@ public class EnemyCreate_Controll : MonoBehaviour
         
         int i = Random.Range(0, EnemyObjectRan.Count-1);
         
-        if (GameObject.Find("GameInfo").GetComponent<GameInfo>().Gameover)
+        if (GameInfo.inst.Gameover)
         {
             yield break;
         }

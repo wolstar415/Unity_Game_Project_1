@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Game_Setting : MonoBehaviour
 {
-    public static Game_Setting control;
+    public static Game_Setting inst;
 
     public float Sound = 1;
     public float Music = 1;
@@ -14,17 +14,18 @@ public class Game_Setting : MonoBehaviour
     public int di = 1;
 
     public List<AudioClip> sound;
-    
-   
+    public AudioSource audiosource;
 
 
-    
+
+
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        if (control ==null)
+        if (inst == null)
         {
-            control = this;
+            inst = this;
         }
     }
 

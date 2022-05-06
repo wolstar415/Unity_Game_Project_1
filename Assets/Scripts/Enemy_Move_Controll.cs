@@ -55,9 +55,9 @@ public class Enemy_Move_Controll : MonoBehaviour
         if (movenum >= 11)
         {
             LifeMin();
-            GameObject.Find("GameInfo").GetComponent<GameInfo>().con_Enemy--;
+            GameInfo.inst.con_Enemy--;
 
-            GameObject.Find("GameInfo").GetComponent<GameInfo>().deadCon++;
+            GameInfo.inst.deadCon++;
             GetComponent<EnemyStat>().Dead = true;
             Destroy(GetComponent<EnemyStat>().HpBar);
             gameObject.transform.position = new Vector3(1000f, 1000f, 1000f);
@@ -71,28 +71,23 @@ public class Enemy_Move_Controll : MonoBehaviour
         
         if (gameObject.GetComponent<EnemyStat>().Boss ==false)
         {
-            //GameObject.Find("GameInfo").GetComponent<GameInfo>().Life = GameObject.Find("GameInfo").GetComponent<GameInfo>().Life - 1;
-            GameObject.Find("GameInfo").GetComponent<GameInfo>().LifeCheck(-1);
+            GameInfo.inst.LifeCheck(-1);
         }
         else
         {
             if (gameObject.GetComponent<EnemyStat>().f_Boss)
             {
-            GameObject.Find("GameInfo").GetComponent<GameInfo>().GameOver();
+                GameInfo.inst.GameOver();
 
             }
             else
             {
-            GameObject.Find("GameInfo").GetComponent<GameInfo>().LifeCheck(-10);
+                GameInfo.inst.LifeCheck(-10);
 
             }
 
-            //GameObject.Find("GameInfo").GetComponent<GameInfo>().Life = GameObject.Find("GameInfo").GetComponent<GameInfo>().Life - 10;
         }
 
-        //if (GameObject.Find("GameInfo").GetComponent<GameInfo>().Life <=0)
-       // {
-            //GameObject.Find("GameInfo").GetComponent<GameInfo>().GameOver();
-        //}
+
     }
 }

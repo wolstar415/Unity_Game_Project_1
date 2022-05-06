@@ -5,6 +5,11 @@ using UnityEngine.EventSystems;
 
 public class ClickEventControll : MonoBehaviour
 {
+    public static ClickEventControll inst;
+    private void Awake()
+    {
+        inst = this;
+    }
     public GameObject ui;
 
     public bool onclick;
@@ -56,10 +61,7 @@ public class ClickEventControll : MonoBehaviour
 
     void Start()  // 처음 시작시 실행되는 함수입니다.
     {
-        uiClick_Evenet = GetComponent<UIClick_Evenet>();
-        gamedata = GameObject.Find("GameData").GetComponent<GameData>();
-        //BuildingClickButton = GameObject.Find("BuildingClickButtonPanel");
-        //BuildingClickButton.SetActive(false);
+
         
 
     }
@@ -75,50 +77,50 @@ public class ClickEventControll : MonoBehaviour
         if (level == 1)
         {
 
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_1.Count);
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_1[ran_tower]);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_1.Count);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_1[ran_tower]);
         }
         else if (level == 2)
         {
 
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_2.Count);
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_2[ran_tower]);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_2.Count);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_2[ran_tower]);
         }
         else if (level == 3)
         {
 
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_3.Count);
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_3[ran_tower]);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_3.Count);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_3[ran_tower]);
         }
         else if (level == 4)
         {
 
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_4.Count);
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_4[ran_tower]);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_4.Count);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_4[ran_tower]);
         }
         else if (level == 5)
         {
 
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_5.Count);
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_5[ran_tower]);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_5.Count);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_5[ran_tower]);
         }
         else if (level == 6)
         {
 
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_6.Count);
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_6[ran_tower]);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_6.Count);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_6[ran_tower]);
         }
         else if (level == 7)
         {
 
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_7.Count);
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_7[ran_tower]);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_7.Count);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_7[ran_tower]);
         }
         else if (level == 8)
         {
 
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_8.Count);
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_8[ran_tower]);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_8.Count);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_8[ran_tower]);
         }
 
         tower.transform.position = tile.transform.position + new Vector3(0, 1f, 0);
@@ -224,7 +226,7 @@ public class ClickEventControll : MonoBehaviour
     void towerbuild()
     {
         float ran_f = Random.Range(0.01f, 100);
-        int lv = GameObject.Find("GameInfo").GetComponent<GameInfo>().Level;
+        int lv = GameInfo.inst.Level;
         int ran_tower;
         //Debug.Log(ran_f);
 
@@ -232,8 +234,8 @@ public class ClickEventControll : MonoBehaviour
         if (gamedata.Tower_Level3_Per[lv] > ran_f)
         {
             LevelTower_build = 3;
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_3.Count);
-            GameObject tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_3[ran_tower]);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_3.Count);
+            GameObject tower = Instantiate(Tower_Class.inst.Tower_Level_3[ran_tower]);
             tower.transform.position = ClickObject.transform.position + new Vector3(0, 1f, 0);
             hit.collider.gameObject.GetComponent<TlieObject>().TowerObject = tower;
             hit.collider.gameObject.GetComponent<TlieObject>().TowerBool = true;
@@ -248,8 +250,8 @@ public class ClickEventControll : MonoBehaviour
         else if (gamedata.Tower_Level3_Per[lv] < ran_f && ran_f <= gamedata.Tower_Level2_Per[lv])
         {
             LevelTower_build = 2;
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_2.Count);
-            GameObject tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_2[ran_tower]);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_2.Count);
+            GameObject tower = Instantiate(Tower_Class.inst.Tower_Level_2[ran_tower]);
             tower.transform.position = ClickObject.transform.position + new Vector3(0, 1f, 0);
             hit.collider.gameObject.GetComponent<TlieObject>().TowerObject = tower;
             hit.collider.gameObject.GetComponent<TlieObject>().TowerBool = true;
@@ -262,8 +264,8 @@ public class ClickEventControll : MonoBehaviour
         else
         {
             LevelTower_build = 1;
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_1.Count);
-            GameObject tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_1[ran_tower]);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_1.Count);
+            GameObject tower = Instantiate(Tower_Class.inst.Tower_Level_1[ran_tower]);
             tower.transform.position = ClickObject.transform.position + new Vector3(0, 1f, 0);
             hit.collider.gameObject.GetComponent<TlieObject>().TowerObject = tower;
             hit.collider.gameObject.GetComponent<TlieObject>().TowerBool = true;
@@ -377,17 +379,17 @@ public class ClickEventControll : MonoBehaviour
                 {
                     if (BuildingReadyBool)
                     {
-                        if (GameObject.Find("GameInfo").GetComponent<GameInfo>().Gold >= 30) // 돈이 있을때
+                        if (GameInfo.inst.Gold >= 30) // 돈이 있을때
                         {
-                            GameObject.Find("GameInfo").GetComponent<GameInfo>().GoldCheck(-30);
-                            GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("-30G",Color.yellow, hit.collider.transform.position);
+                            GameInfo.inst.GoldCheck(-30);
+                            Texteffect.inst.T_Effect("-30G",Color.yellow, hit.collider.transform.position);
                             towerbuild();
                             onclick = false;
                             //clickState = ClickEventControll.ClickState.Tower;
                         }
                         else
                         {
-                            GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect("No GOLD(30)", Color.yellow, hit.collider.transform.position);
+                            Texteffect.inst.T_Effect("No GOLD(30)", Color.yellow, hit.collider.transform.position);
                         }
                         
                         initi();
@@ -785,11 +787,11 @@ public class ClickEventControll : MonoBehaviour
             Tower_Destory(se_tower);
 
             LevelTower_build = 2;
-        ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_2.Count);
+        ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_2.Count);
 
             
 
-            GameObject tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_2[ran_tower]);
+            GameObject tower = Instantiate(Tower_Class.inst.Tower_Level_2[ran_tower]);
         tower.transform.position = tile.transform.position + new Vector3(0, 1f, 0);
             tile.GetComponent<TlieObject>().TowerObject = tower;
             tile.GetComponent<TlieObject>().TowerBool = true;
@@ -812,11 +814,11 @@ public class ClickEventControll : MonoBehaviour
             Tower_Destory(se_tower);
 
             LevelTower_build = 3;
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_3.Count);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_3.Count);
 
 
 
-            GameObject tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_3[ran_tower]);
+            GameObject tower = Instantiate(Tower_Class.inst.Tower_Level_3[ran_tower]);
             tower.transform.position = tile.transform.position + new Vector3(0, 1f, 0);
             tile.GetComponent<TlieObject>().TowerObject = tower;
             tile.GetComponent<TlieObject>().TowerBool = true;
@@ -837,11 +839,11 @@ public class ClickEventControll : MonoBehaviour
             Tower_Destory(se_tower);
 
             LevelTower_build = 4;
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_4.Count);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_4.Count);
 
 
 
-            GameObject tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_4[ran_tower]);
+            GameObject tower = Instantiate(Tower_Class.inst.Tower_Level_4[ran_tower]);
             tower.transform.position = tile.transform.position + new Vector3(0, 1f, 0);
             tile.GetComponent<TlieObject>().TowerObject = tower;
             tile.GetComponent<TlieObject>().TowerBool = true;
@@ -862,11 +864,11 @@ public class ClickEventControll : MonoBehaviour
             Tower_Destory(se_tower);
 
             LevelTower_build = 5;
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_5.Count);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_5.Count);
 
 
 
-            GameObject tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_5[ran_tower]);
+            GameObject tower = Instantiate(Tower_Class.inst.Tower_Level_5[ran_tower]);
             tower.transform.position = tile.transform.position + new Vector3(0, 1f, 0);
             tile.GetComponent<TlieObject>().TowerObject = tower;
             tile.GetComponent<TlieObject>().TowerBool = true;
@@ -887,11 +889,11 @@ public class ClickEventControll : MonoBehaviour
             Tower_Destory(se_tower);
 
             LevelTower_build = 6;
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_6.Count);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_6.Count);
 
 
 
-            GameObject tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_6[ran_tower]);
+            GameObject tower = Instantiate(Tower_Class.inst.Tower_Level_6[ran_tower]);
             tower.transform.position = tile.transform.position + new Vector3(0, 1f, 0);
             tile.GetComponent<TlieObject>().TowerObject = tower;
             tile.GetComponent<TlieObject>().TowerBool = true;
@@ -912,11 +914,11 @@ public class ClickEventControll : MonoBehaviour
             Tower_Destory(se_tower);
 
             LevelTower_build = 7;
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_7.Count);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_7.Count);
 
 
 
-            GameObject tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_7[ran_tower]);
+            GameObject tower = Instantiate(Tower_Class.inst.Tower_Level_7[ran_tower]);
             tower.transform.position = tile.transform.position + new Vector3(0, 1f, 0);
             tile.GetComponent<TlieObject>().TowerObject = tower;
             tile.GetComponent<TlieObject>().TowerBool = true;
@@ -937,11 +939,11 @@ public class ClickEventControll : MonoBehaviour
             Tower_Destory(se_tower);
 
             LevelTower_build = 8;
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_8.Count);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_8.Count);
 
 
 
-            GameObject tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_8[ran_tower]);
+            GameObject tower = Instantiate(Tower_Class.inst.Tower_Level_8[ran_tower]);
             tower.transform.position = tile.transform.position + new Vector3(0, 1f, 0);
             tile.GetComponent<TlieObject>().TowerObject = tower;
             tile.GetComponent<TlieObject>().TowerBool = true;
@@ -975,11 +977,11 @@ public class ClickEventControll : MonoBehaviour
             Tower_Destory(f_tower);
 
             LevelTower_build = 2;
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_2.Count);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_2.Count);
 
 
 
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_2[ran_tower]);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_2[ran_tower]);
             tower.transform.position = tile.transform.position + new Vector3(0, 1f, 0);
             tile.GetComponent<TlieObject>().TowerObject = tower;
             tile.GetComponent<TlieObject>().TowerBool = true;
@@ -1001,11 +1003,11 @@ public class ClickEventControll : MonoBehaviour
             Tower_Destory(f_tower);
 
             LevelTower_build = 3;
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_3.Count);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_3.Count);
 
 
 
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_3[ran_tower]);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_3[ran_tower]);
             tower.transform.position = tile.transform.position + new Vector3(0, 1f, 0);
             tile.GetComponent<TlieObject>().TowerObject = tower;
             tile.GetComponent<TlieObject>().TowerBool = true;
@@ -1025,11 +1027,11 @@ public class ClickEventControll : MonoBehaviour
             Tower_Destory(f_tower);
 
             LevelTower_build = 4;
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_4.Count);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_4.Count);
 
 
 
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_4[ran_tower]);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_4[ran_tower]);
             tower.transform.position = tile.transform.position + new Vector3(0, 1f, 0);
             tile.GetComponent<TlieObject>().TowerObject = tower;
             tile.GetComponent<TlieObject>().TowerBool = true;
@@ -1050,11 +1052,11 @@ public class ClickEventControll : MonoBehaviour
  
 
             LevelTower_build = 5;
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_5.Count);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_5.Count);
 
 
 
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_5[ran_tower]);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_5[ran_tower]);
             tower.transform.position = tile.transform.position + new Vector3(0, 1f, 0);
             tile.GetComponent<TlieObject>().TowerObject = tower;
             tile.GetComponent<TlieObject>().TowerBool = true;
@@ -1074,11 +1076,11 @@ public class ClickEventControll : MonoBehaviour
             Tower_Destory(f_tower);
 
             LevelTower_build = 6;
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_6.Count);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_6.Count);
 
 
 
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_6[ran_tower]);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_6[ran_tower]);
             tower.transform.position = tile.transform.position + new Vector3(0, 1f, 0);
             tile.GetComponent<TlieObject>().TowerObject = tower;
             tile.GetComponent<TlieObject>().TowerBool = true;
@@ -1098,11 +1100,11 @@ public class ClickEventControll : MonoBehaviour
             Tower_Destory(f_tower);
 
             LevelTower_build = 7;
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_7.Count);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_7.Count);
 
 
 
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_7[ran_tower]);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_7[ran_tower]);
             tower.transform.position = tile.transform.position + new Vector3(0, 1f, 0);
             tile.GetComponent<TlieObject>().TowerObject = tower;
             tile.GetComponent<TlieObject>().TowerBool = true;
@@ -1123,11 +1125,11 @@ public class ClickEventControll : MonoBehaviour
 
 
             LevelTower_build = 8;
-            ran_tower = Random.Range(0, GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_8.Count);
+            ran_tower = Random.Range(0, Tower_Class.inst.Tower_Level_8.Count);
 
 
 
-            tower = Instantiate(GameObject.Find("Tower_Class").GetComponent<Tower_Class>().Tower_Level_8[ran_tower]);
+            tower = Instantiate(Tower_Class.inst.Tower_Level_8[ran_tower]);
             tower.transform.position = tile.transform.position + new Vector3(0, 1f, 0);
             tile.GetComponent<TlieObject>().TowerObject = tower;
             tile.GetComponent<TlieObject>().TowerBool = true;

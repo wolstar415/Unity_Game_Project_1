@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameData : MonoBehaviour
 {
+    public static GameData inst;
+
     public string dataPath_Level;
     public string dataPath_Tower;
     public string dataPath_Enemy;
@@ -109,7 +111,7 @@ public class GameData : MonoBehaviour
     }
     private void Awake()
     {
-
+        inst = this;
         Level();
         Tower1();
         Enemy();

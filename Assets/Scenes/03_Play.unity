@@ -11527,7 +11527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sharedProfile: {fileID: 11400000, guid: a78038195cba57d428eab1eccf0d50d2, type: 2}
   isGlobal: 1
-  blendDistance: 0
+  blendDistance: 494.9
   weight: 0.9
   priority: 0
 --- !u!114 &352399960
@@ -33561,14 +33561,14 @@ MonoBehaviour:
   BuildingClickButton: {fileID: 0}
   BuildingReadyTile: {fileID: 0}
   BuildingReadyBool: 0
-  uiClick_Evenet: {fileID: 0}
+  uiClick_Evenet: {fileID: 965307694}
   posz: {x: 0, y: 0, z: 0}
   layermask:
     serializedVersion: 2
     m_Bits: 215
   LevelTower_build: 0
   selectlevelint: 0
-  gamedata: {fileID: 0}
+  gamedata: {fileID: 850433062}
   ClickObject: {fileID: 0}
   towerObject: {fileID: 0}
   tileObject: {fileID: 0}
@@ -55850,12 +55850,16 @@ MonoBehaviour:
   Level: 0
   Life: 20
   ItemConMax: 21
+  GoldText: {fileID: 0}
+  PointText: {fileID: 0}
+  HUDTranform: {fileID: 611016128}
   Enemy_noCon: 0
   con_Enemy: 0
   Gameover: 0
   Victory: 0
   deadCon: 0
   final_Round: 70
+  heart: {fileID: 1484583300}
   difficulty: 0
   difficulty_AddHp: 1
   Lifetext: {fileID: 1484583303}
@@ -58975,12 +58979,13 @@ MonoBehaviour:
   - {fileID: 1258991314359982, guid: d5f916524b95d164ebcbfe69ff4916e0, type: 3}
   coolTime: 1
   curTime: 0
+  gameInfo: {fileID: 1678566296}
   EnemyNameCnt: 0
   Enemy_Hp: 0
   Enemy_Sp: 0
   Enemy_De: 0
   Enemy_Gold: 0
-  gameData: {fileID: 0}
+  gameData: {fileID: 850433062}
   final_Boss: {fileID: 1258991314359982, guid: acbc97b6ae2b6f04cb79b7fb101580b4, type: 3}
 --- !u!1 &1741101782
 GameObject:

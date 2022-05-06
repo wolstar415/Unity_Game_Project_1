@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class GameInfo : MonoBehaviour
 {
+    public static GameInfo inst;
+    private void Awake()
+    {
+        inst = this;
+    }
     public int Round=0;
     public int Gold = 0;
     public int Point = 0;
@@ -15,6 +20,10 @@ public class GameInfo : MonoBehaviour
     public int Level = 0;
     public int Life = 20;
     public int ItemConMax;
+    public GameObject GoldText;
+    public GameObject PointText;
+    public Transform HUDTranform;
+
 
     public int Enemy_noCon;
     public int con_Enemy;
@@ -25,7 +34,7 @@ public class GameInfo : MonoBehaviour
     public int deadCon=0;
 
     public int final_Round=70;
-
+    public GameObject heart;
     public enum Difficulty
     {
         None=0,
@@ -48,16 +57,16 @@ public class GameInfo : MonoBehaviour
 
     public GameObject Gameover_GameOject;
     public GameObject GameVictory_GameOject;
+    public Transform Damageparent;
     public void GameOver()
     {
         Gameover = true;
-        //Destroy(GameObject.Find("MainObject"));
 
         GameObject[] damagetext = GameObject.FindGameObjectsWithTag("Tower");
 
         for (int i = 0; i < damagetext.Length; i++)
         {
-            GameObject.Find("ClickEventControll").GetComponent<ClickEventControll>().Tower_Destory(damagetext[i]);
+            ClickEventControll.inst.Tower_Destory(damagetext[i]);
         }
 
         GameObject[] damagetext2 = GameObject.FindGameObjectsWithTag("Enemy");
@@ -86,11 +95,11 @@ public class GameInfo : MonoBehaviour
 
         try
         {
-        int i = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().di;
+        int i = Game_Setting.inst.di;
         difficulty = (Difficulty)i;
         difficulty_AddHp= difficulty_AddHp*(0.9f+(0.1f*i));
-            GameObject.Find("Game_Setting").GetComponent<AudioSource>().clip = GameObject.Find("Game_Setting").GetComponent<Game_Setting>().sound[1];
-            GameObject.Find("Game_Setting").GetComponent<AudioSource>().Play();
+            Game_Setting.inst.audiosource.clip = Game_Setting.inst.sound[1];
+            Game_Setting.inst.audiosource.Play();
 
             if ( i >= 4)
             {
@@ -167,10 +176,9 @@ public class GameInfo : MonoBehaviour
         {
             GameOver();
         }
-        GameObject gg = GameObject.Find("HeartText");
-        Vector3 mousePositionc = new Vector3(gg.transform.position.x - 100f,
-gg.transform.position.y - 60f, Camera.main.WorldToScreenPoint(gg.transform.position).z);
-        GameObject.Find("TextEffect").GetComponent<Texteffect>().T_Effect(g.ToString(), Color.red, Camera.main.ScreenToWorldPoint(mousePositionc), 2f);
+
+        Vector3 mousePositionc = new Vector3(heart.transform.position.x - 100f,heart.transform.position.y - 60f, Camera.main.WorldToScreenPoint(heart.transform.position).z);
+        Texteffect.inst.T_Effect(g.ToString(), Color.red, Camera.main.ScreenToWorldPoint(mousePositionc), 2f);
 
     }
     public void RoundSet(int g)

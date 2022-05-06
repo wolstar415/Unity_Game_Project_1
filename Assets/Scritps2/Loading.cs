@@ -46,7 +46,7 @@ public class Loading : MonoBehaviour
                 text.text = (slider.value * 100).ToString("F0") + "%";
                 if (slider.value >= 1f)
                 {
-                    GameObject.Find("Game_Setting").GetComponent<AudioSource>().Stop();
+                    Game_Setting.inst.audiosource.Stop();
                     op.allowSceneActivation = true;
                     yield break;
                 }
