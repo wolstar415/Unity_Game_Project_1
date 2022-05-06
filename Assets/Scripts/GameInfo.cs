@@ -57,6 +57,7 @@ public class GameInfo : MonoBehaviour
 
     public GameObject Gameover_GameOject;
     public GameObject GameVictory_GameOject;
+    public Transform Damageparent;
     public void GameOver()
     {
         Gameover = true;

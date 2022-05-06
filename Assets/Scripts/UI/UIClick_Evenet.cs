@@ -23,7 +23,7 @@ public class UIClick_Evenet : MonoBehaviour
         Tower = tower;
         TowerUI.GetComponent<UI_Tower_Info>().iconCheck();
         TowerUI.SetActive(true);
-        GameObject.Find("UI_Button_Click").GetComponent<UIButtonClick>().resetbutton();
+        UIButtonClick.inst.resetbutton();
 
         //skill_info.SetActive(false);
         //EnemyUI.SetActive(false);

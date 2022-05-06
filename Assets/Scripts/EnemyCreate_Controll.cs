@@ -5,10 +5,14 @@ using UnityEngine.UI;
 
 public class EnemyCreate_Controll : MonoBehaviour
 {
+    public static EnemyCreate_Controll inst;
     public List<GameObject> EnemyObject;
     public List<GameObject> BossEnemyObject;
 
-
+    private void Awake()
+    {
+        inst = this;
+    }
     public List<GameObject> EnemyObjectRan;
     public List<GameObject> EnemyObjectRan2;
 

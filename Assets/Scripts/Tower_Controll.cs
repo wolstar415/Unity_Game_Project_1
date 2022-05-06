@@ -175,9 +175,9 @@ public class Tower_Controll : MonoBehaviour
 
     public void PointCheck()
     {
-        int i = GameObject.Find("ClickEventControll").GetComponent<ClickEventControll>().selectlevelint;
+        int i = ClickEventControll.inst.selectlevelint;
 
-        if (GameObject.Find("ClickEventControll").GetComponent<ClickEventControll>().ClickObject != gameObject && GameObject.Find("ClickEventControll").GetComponent<ClickEventControll>().playerState==ClickEventControll.PlayerState.Draging && gameObject.GetComponent<TowerStat>().Level == i && gameObject.GetComponent<TowerStat>().Level <8)
+        if (ClickEventControll.inst.ClickObject != gameObject && ClickEventControll.inst.playerState==ClickEventControll.PlayerState.Draging && gameObject.GetComponent<TowerStat>().Level == i && gameObject.GetComponent<TowerStat>().Level <8)
         {
 
             gameObject.transform.GetChild(2).gameObject.SetActive(true);

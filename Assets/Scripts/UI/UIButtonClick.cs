@@ -7,10 +7,14 @@ using UnityEngine.UI;
 
 public class UIButtonClick : MonoBehaviour
 {
+    public static UIButtonClick inst;
     public GameObject skill_info;
     public List<Sprite> SkillIamage;
     public Image SkillSprite;
-   
+    private void Awake()
+    {
+        inst = this;
+    }
 
     public GameObject Addtext;
     public Text add_Info_Text;
@@ -252,7 +256,7 @@ public class UIButtonClick : MonoBehaviour
         Addtext.GetComponent<Addtext>().CulTime = 0f;
         if (checki == 1)
         {
-            //Debug.Log(GameObject.Find("GameData").GetComponent<GameData>().Tower_Info_String[i3]);
+
 
             add_Info_Text.text = GameData.inst.Tower_Info_String[i3];
         }
@@ -321,7 +325,7 @@ public class UIButtonClick : MonoBehaviour
         Addtext.GetComponent<Addtext>().CulTime = 0f;
         if (checki == 1)
         {
-            //Debug.Log(GameObject.Find("GameData").GetComponent<GameData>().Tower_Info_String[i3]);
+
 
             add_Info_Text.text = GameData.inst.Tower_Info_String[i3];
         }

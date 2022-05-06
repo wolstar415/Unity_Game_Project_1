@@ -19,12 +19,7 @@ public class TowerBuild_Controll : MonoBehaviour
     }
     void Start()  // 처음 시작시 실행되는 함수입니다.
     {
-        clickEventControll = GameObject.Find("ClickEventControll").GetComponent<ClickEventControll>();
+        clickEventControll = ClickEventControll.inst;
     }
 
-    
-    void Update() // 매 프레임마다 실행되는 함수입니다.
-    {
-        
-    }
 }

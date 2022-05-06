@@ -24,7 +24,7 @@ using UnityEngine.UI;
         if (Enemy == null || Enemy.activeSelf == false)
         {
             gameObject.SetActive(false);
-            GameObject.Find("ClickEventControll").GetComponent<ClickEventControll>().clickState = ClickEventControll.ClickState.None;
+            ClickEventControll.inst.clickState = ClickEventControll.ClickState.None;
             return;
         }
         enemy_hp_text.text= Enemy.GetComponent<EnemyStat>().Hp.ToString("F0");
