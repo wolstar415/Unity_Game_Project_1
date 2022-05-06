@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Item_System : MonoBehaviour
 {
-    public List<GameObject> item_bullet; 
-    void Start()  // 처음 시작시 실행되는 함수입니다.
+    public List<GameObject> item_bullet;
+    public static Item_System inst;
+    private void Awake()
     {
-        
-    }
-
-    
-    void Update() // 매 프레임마다 실행되는 함수입니다.
-    {
-        
+        inst = this;
     }
 }

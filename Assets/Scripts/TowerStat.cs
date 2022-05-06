@@ -113,14 +113,14 @@ public class TowerStat : MonoBehaviour
 
     void Awake()  // 처음 시작시 실행되는 함수입니다.
     {
-        gamedata= GameObject.Find("GameData").GetComponent<GameData>();
+        gamedata= GameData.inst;
         Damage= gamedata.Tower_Ad[TowerIndex];
         AtSpeed = gamedata.Tower_As[TowerIndex];
         DoubleAt = gamedata.Tower_Cri_D[TowerIndex];
         DoubleAtPer = gamedata.Tower_Cri_P[TowerIndex];
         Rang = gamedata.Tower_Rang[TowerIndex];
         gameObject.transform.GetChild(1).localScale = gameObject.transform.GetChild(1).localScale + new Vector3(Rang, 0, Rang);
-        itemmax = GameObject.Find("GameInfo").GetComponent<GameInfo>().ItemConMax;
+        itemmax = GameInfo.inst.ItemConMax;
         Item_Check = new bool[itemmax];
         for (int i = 0; i < Item_Check.Length; i++) { Item_Check[i] = false; }
     }
