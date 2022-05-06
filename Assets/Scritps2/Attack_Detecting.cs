@@ -24,8 +24,11 @@ public class Attack_Detecting : MonoBehaviour
     public float debuff_defense = 0f;
 
 
-    
-  
+
+    void enemy_remove(GameObject Enemy) // 리스트 안에 있는 적이 죽을 때 실행되는 함수
+    {
+        tower_controll.enemies.Remove(Enemy);
+    }
 
 
     private void OnTriggerEnter(Collider other)
@@ -38,6 +41,7 @@ public class Attack_Detecting : MonoBehaviour
         {
             tower_controll.towerstate = Tower_Controll.TowerState.ATTACKING;
             tower_controll.enemies.Add(other.gameObject);
+            other.GetComponent<EnemyStat>().EnemyDead_Event += enemy_remove;
 
             if (tower_controll.enemies.Count ==1)
             {
@@ -75,6 +79,7 @@ public class Attack_Detecting : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             tower_controll.enemies.Remove(other.gameObject);
+            other.GetComponent<EnemyStat>().EnemyDead_Event -= enemy_remove;
             //if (tower_controll.enemies.Count == 1)
             //{
             //   tower_controll.targetObject = other.gameObject;
@@ -85,6 +90,7 @@ public class Attack_Detecting : MonoBehaviour
             other.gameObject.GetComponent<EnemyStat>().SpeedCalculate = other.gameObject.GetComponent<EnemyStat>().SpeedCalculate + debuff_speed;
             other.gameObject.GetComponent<EnemyStat>().SpeedCalculate = other.gameObject.GetComponent<EnemyStat>().SpeedCalculate + (other.gameObject.GetComponent<EnemyStat>().SpeedInit * debuff_speedP);
             }
+
         }
 
         if (other.gameObject.tag == "Tower" && buff_AD + buff_AS + buff_criD + buff_criP + buff_RANG + buff_ADP != 0)

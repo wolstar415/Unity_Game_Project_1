@@ -15,7 +15,7 @@ public class EnemyCreate_Controll : MonoBehaviour
     }
     public List<GameObject> EnemyObjectRan;
     public List<GameObject> EnemyObjectRan2;
-
+    
     public float coolTime = 1f;
     public float curTime = 0f;
     public GameInfo gameInfo;
@@ -200,6 +200,7 @@ public class EnemyCreate_Controll : MonoBehaviour
     {
         int i = Random.Range(0, EnemyObjectRan2.Count-1);
         yield return new WaitForSeconds(0f);
+        
 
         if (GameInfo.inst.Gameover)
         {
@@ -235,31 +236,33 @@ public class EnemyCreate_Controll : MonoBehaviour
 
     }
 
+
+
     IEnumerator StartRoundGo(float Time,int EnemyCnt)
     {
-        
-        int i = Random.Range(0, EnemyObjectRan.Count-1);
-        
+        List<GameObject> LEnemies=new List<GameObject>();
+        var t = new WaitForSeconds(Time);
+        int i = Random.Range(0, EnemyObjectRan.Count);
         if (GameInfo.inst.Gameover)
         {
             yield break;
         }
         else
-        { 
+        {
+            int EnemyCount = 0;
+            //if (EnemyCnt >0)
 
 
-        //if (EnemyCnt >0)
-                while (EnemyCnt > 0)
-
+        while (EnemyCount >= EnemyCnt)
         {
         //GameObject Enemy = Instantiate(EnemyObject[gameInfo.Round]);
-                GameObject Enemy = Instantiate(EnemyObjectRan[i]);
-                
-                Enemy.transform.position = gameObject.transform.position;
+        GameObject Enemy = Instantiate(EnemyObjectRan[i]);
+               
+        Enemy.transform.position = gameObject.transform.position;
                 
         Enemy.gameObject.name = "Enemy_Round" + gameInfo.Round + "_" + EnemyNameCnt;
 
-                Enemy.GetComponent<EnemyStat>().RoundNum = gameInfo.Round;
+            Enemy.GetComponent<EnemyStat>().RoundNum = gameInfo.Round;
             Enemy.GetComponent<EnemyStat>().Hp = Enemy_Hp;
             Enemy.GetComponent<EnemyStat>().Hpmax = Enemy_Hp;
             Enemy.GetComponent<EnemyStat>().SpeedInit = Enemy_Sp;
@@ -268,16 +271,17 @@ public class EnemyCreate_Controll : MonoBehaviour
             EnemyNameCnt++;
             gameInfo.con_Enemy++;
             gameInfo.Enemy_noCon--;
-                EnemyCnt--;
-            yield return new WaitForSeconds(Time);
+                //EnemyCnt--;
+            EnemyCount++;
+                LEnemies.Add(Enemy);
+                yield return t;
         //StartCoroutine(StartRoundGo(Time, EnemyCnt - 1));
         }
-            yield return new WaitUntil(() => gameInfo.deadCon >=gameInfo.RoundCnt);
+            yield return new WaitUntil(() => LEnemies.Count == 0);
             yield return new WaitForSeconds(1f);
             //Debug.Log("라운드시작"+ gameInfo.Round);
             if (EnemyObjectRan.Count>1)
             {
-
             EnemyObjectRan.RemoveAt(i);
             }
             gameInfo.deadCon = 0;
