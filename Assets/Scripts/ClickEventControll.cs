@@ -30,6 +30,7 @@ public class ClickEventControll : MonoBehaviour
     public int selectlevelint;
 
     public GameData gamedata;
+    
 
     
 
