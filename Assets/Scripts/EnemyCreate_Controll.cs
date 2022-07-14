@@ -98,13 +98,13 @@ public class EnemyCreate_Controll : MonoBehaviour
         gameInfo.GoldCheck(30);
             GameObject g = GameInfo.inst.GoldText; 
             Vector3 mousePositionc = new Vector3(g.transform.position.x - 50f,
-    g.transform.position.y - 60f, Camera.main.WorldToScreenPoint(g.transform.position).z);
+        g.transform.position.y - 60f, Camera.main.WorldToScreenPoint(g.transform.position).z);
             Texteffect.inst.T_Effect("+30G", Color.yellow, Camera.main.ScreenToWorldPoint(mousePositionc), 1.5f);
 
             gameInfo.PointCheck(1);
             GameObject p = GameInfo.inst.PointText;
             Vector3 mousePosition = new Vector3(p.transform.position.x - 50f,
-    p.transform.position.y - 60f, Camera.main.WorldToScreenPoint(p.transform.position).z);
+        p.transform.position.y - 60f, Camera.main.WorldToScreenPoint(p.transform.position).z);
             Texteffect.inst.T_Effect("+1P", Color.cyan, Camera.main.ScreenToWorldPoint(mousePosition), 1.5f);
 
 
@@ -238,9 +238,9 @@ public class EnemyCreate_Controll : MonoBehaviour
 
 
 
-    IEnumerator StartRoundGo(float Time,int EnemyCnt)
+    IEnumerator StartRoundGo(float Time, int EnemyCnt)
     {
-        List<GameObject> LEnemies=new List<GameObject>();
+
         var t = new WaitForSeconds(Time);
         int i = Random.Range(0, EnemyObjectRan.Count);
         if (GameInfo.inst.Gameover)
@@ -250,47 +250,43 @@ public class EnemyCreate_Controll : MonoBehaviour
         else
         {
             int EnemyCount = 0;
-            //if (EnemyCnt >0)
 
 
-        while (EnemyCount >= EnemyCnt)
-        {
-        //GameObject Enemy = Instantiate(EnemyObject[gameInfo.Round]);
-        GameObject Enemy = Instantiate(EnemyObjectRan[i]);
-               
-        Enemy.transform.position = gameObject.transform.position;
-                
-        Enemy.gameObject.name = "Enemy_Round" + gameInfo.Round + "_" + EnemyNameCnt;
-
-            Enemy.GetComponent<EnemyStat>().RoundNum = gameInfo.Round;
-            Enemy.GetComponent<EnemyStat>().Hp = Enemy_Hp;
-            Enemy.GetComponent<EnemyStat>().Hpmax = Enemy_Hp;
-            Enemy.GetComponent<EnemyStat>().SpeedInit = Enemy_Sp;
-            Enemy.GetComponent<EnemyStat>().DefenceInit = Enemy_De;
-            Enemy.GetComponent<EnemyStat>().GetMoney = Enemy_Gold;
-            EnemyNameCnt++;
-            gameInfo.con_Enemy++;
-            gameInfo.Enemy_noCon--;
-                //EnemyCnt--;
-            EnemyCount++;
-                LEnemies.Add(Enemy);
-                yield return t;
-        //StartCoroutine(StartRoundGo(Time, EnemyCnt - 1));
-        }
-            yield return new WaitUntil(() => LEnemies.Count == 0);
-            yield return new WaitForSeconds(1f);
-            //Debug.Log("라운드시작"+ gameInfo.Round);
-            if (EnemyObjectRan.Count>1)
+            while (EnemyCount < EnemyCnt)
             {
-            EnemyObjectRan.RemoveAt(i);
+                GameObject Enemy = Instantiate(EnemyObjectRan[i]);
+
+                Enemy.transform.position = gameObject.transform.position;
+
+                Enemy.gameObject.name = "Enemy_Round" + gameInfo.Round + "_" + EnemyNameCnt;
+
+                Enemy.GetComponent<EnemyStat>().RoundNum = gameInfo.Round;
+                Enemy.GetComponent<EnemyStat>().Hp = Enemy_Hp;
+                Enemy.GetComponent<EnemyStat>().Hpmax = Enemy_Hp;
+                Enemy.GetComponent<EnemyStat>().SpeedInit = Enemy_Sp;
+                Enemy.GetComponent<EnemyStat>().DefenceInit = Enemy_De;
+                Enemy.GetComponent<EnemyStat>().GetMoney = Enemy_Gold;
+                EnemyNameCnt++;
+                gameInfo.con_Enemy++;
+                gameInfo.Enemy_noCon--;
+                EnemyCount++;
+                yield return t;
             }
-            gameInfo.deadCon = 0;
-            RoundStart();
+
+            yield return new WaitUntil(() => gameInfo.deadCon == EnemyCount);
+                if (EnemyObjectRan.Count > 1)
+                {
+                    EnemyObjectRan.RemoveAt(i);
+                }
+
+                gameInfo.deadCon = 0;
+                RoundStart();
+
+            }
 
 
         }
-
-    }
+    
 
 
 

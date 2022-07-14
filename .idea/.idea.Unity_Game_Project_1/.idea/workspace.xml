@@ -4,18 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="449e8dcf-e313-4f14-b135-757de31c24e8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/My Model/0 and 19/TT_demo/prefabs/TT_demo_female.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My Model/0 and 19/TT_demo/prefabs/TT_demo_female.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My Model/12/Anim/role_animator_controller.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My Model/12/Anim/role_animator_controller.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My Model/43/prefaps/macho_humanoid.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My Model/43/prefaps/macho_humanoid.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ClickEventControll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ClickEventControll.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/my anim/Model ani/model 28.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/my anim/Model ani/model 28.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-    </list>
+    <list default="true" id="449e8dcf-e313-4f14-b135-757de31c24e8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/RotationSpeed_IJobEntityBatch.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities@0.51.0-preview.32/Unity.Entities.Hybrid/ConvertToEntity.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -49,7 +46,7 @@
       <method v="2" />
     </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2020.3.31f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.6f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\you\Documents\GitHub\Unity_Game_Project_1 -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\you\Documents\GitHub\Unity_Game_Project_1" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -92,6 +89,8 @@
       <workItem from="1655397830005" duration="263000" />
       <workItem from="1655840001179" duration="75000" />
       <workItem from="1656298302780" duration="15000" />
+      <workItem from="1657813940927" duration="371000" />
+      <workItem from="1657814352521" duration="3091000" />
     </task>
     <servers />
   </component>

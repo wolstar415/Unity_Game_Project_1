@@ -48,7 +48,7 @@ public class Bullet_item_01 : MonoBehaviour
         //EnemyStat enemystat = other.gameObject.GetComponent<EnemyStat>();
 
 
-        if (other.tag == "Enemy")
+        if (other.CompareTag("Enemy"))
         {
            
 

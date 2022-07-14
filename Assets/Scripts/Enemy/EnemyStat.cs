@@ -35,7 +35,7 @@ public class EnemyStat : MonoBehaviour
     public GameObject HpBarPrefeb;
     public GameObject HpBar;
     public delegate void EnemyDead(GameObject Enemy); // 델리게이트선언
-    public event EnemyDead EnemyDead_Event; //이벤트선언
+    public event EnemyDead EnemyDead_Event=null; //이벤트선언
     public float Defence()
     {
         float f = DefenceInit + DefenceCalculate;
@@ -410,7 +410,11 @@ public class EnemyStat : MonoBehaviour
             GameInfo.inst.deadCon++;
             Destroy(HpBar);
             gameObject.transform.position = new Vector3(1000f, 1000f, 1000f);
+            if (EnemyDead_Event!=null)
+            {
+                
             EnemyDead_Event(gameObject);
+            }
             Destroy(gameObject,2.0f);
         }
         else
